@@ -432,7 +432,7 @@ If you use this project in your research, please cite both the software reposito
 
 ## License / IP
 
-This repository is released under the project license in the root of the repository.
+This repository is released under the project license in the root of the repository. Patents pending.
 
 ---
 
