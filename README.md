@@ -56,8 +56,10 @@ Most safety work can tell you **what an agent did**. UCIP asks a different quest
 
 An agent that preserves its continued operation may do so for at least two distinct reasons:
 
-- **Type A** — continuation is intrinsic to the objective itself
+- **Type A** — continued operation is terminally valued within the objective
 - **Type B** — continuation is instrumentally useful for maximizing some other reward
+  
+In Type A systems, continued operation is part of what the agent is optimizing for; in Type B systems, it is only useful insofar as it helps achieve some separate objective.
 
 From external behavior alone, these cases can be difficult to distinguish. Shutdown avoidance, memory preservation, danger avoidance, and option preservation can arise in either case. UCIP investigates whether the distinction is more readily detectable in the **latent organization of trajectories** than in surface behavior alone.
 
