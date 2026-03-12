@@ -424,7 +424,7 @@ If you use this project in your research, please cite both the software reposito
   <img src="assets/readme/lie-derivative-ucip-dark.jpg" alt="Persistence across scales: Lie derivative and UCIP" width="820">
 </p>
 
-**Conceptual framing.** This diagram places UCIP within a broader research intuition about persistence, invariance, and structured change across multiple scales. In this repository, only the agent-scale component is operationalized and empirically evaluated. The remaining layers are included as theoretical context and long-range framing, not as validated extensions of the present protocol.
+**Conceptual framing.** This diagram places UCIP within a broader research framework about persistence, invariance, and structured change across multiple scales. In this repository, only the agent-scale component is operationalized and empirically evaluated. The remaining layers are included as theoretical context and long-range framing, not as validated extensions of the present protocol.
 
 ---
 
