@@ -69,26 +69,21 @@ UCIP uses a **Quantum Boltzmann Machine (QBM)** as a latent model because the de
 
 The core measurement object is a thermal density matrix:
 
-### Thermal density matrix
-
-```math
+$$
 \rho = \frac{e^{-\beta H}}{Z}
+$$
 
 with a reduced density matrix over a hidden-layer partition:
 
-### Reduced density matrix
-
-```md
-```math
-\rho_A = \operatorname{Tr}_B(\rho)
+$$
+\rho_A = \mathrm{Tr}_B(\rho)
+$$
 
 The leading metric is the von Neumann entropy:
 
-### von Neumann entropy
-
-```md
-```math
-S(\rho_A) = -\operatorname{Tr}\!\left(\rho_A \log \rho_A\right)
+$$
+S(\rho_A) = -\mathrm{Tr}(\rho_A \log \rho_A)
+$$
 
 UCIP interprets this operationally. A higher value does **not** establish consciousness, desire, or subjective experience. It indicates that, under the chosen encoding, continuation-related structure is less easily factorized and more tightly coupled across the latent partition.
 
