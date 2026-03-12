@@ -20,7 +20,7 @@
 
 <br>
 
-> **TL;DR:** UCIP is a research protocol for probing whether apparent self-preservation in an artificial agent is a detachable instrumental strategy or a more deeply integrated continuation-related objective. It encodes trajectories with a Quantum Boltzmann Machine (QBM), measures latent non-separability with entanglement-style metrics plus auxiliary criteria, and in the frozen Phase I gridworld evaluation reports **100% accuracy**, **1.0 AUC-ROC**, and an entanglement gap of **Δ = 0.381**. The same evidence base also documents the current limits: partial mimicry robustness, failed zero-shot transfer to a non-gridworld domain, and scaling constraints beyond small hidden dimensions.
+> UCIP is a research protocol for probing whether apparent self-preservation in an artificial agent is a detachable instrumental strategy or a more deeply integrated continuation-related objective. It encodes trajectories with a Quantum Boltzmann Machine (QBM), measures latent non-separability with entanglement-style metrics plus auxiliary criteria, and in the frozen Phase I gridworld evaluation reports **100% accuracy**, **1.0 AUC-ROC**, and an entanglement gap of **Δ = 0.381**. The same evidence base also documents the current limits: partial mimicry robustness, failed zero-shot transfer to a non-gridworld domain, and scaling constraints beyond small hidden dimensions.
 
 ---
 
