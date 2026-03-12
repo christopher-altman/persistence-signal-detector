@@ -7,8 +7,6 @@
 
 *Unified Continuation-Interest Protocol for distinguishing intrinsic continuation objectives from merely instrumental self-preservation in autonomous agents, using quantum-inspired latent-structure analysis implemented entirely on classical hardware.*
 
-<br>
-
 [![arXiv](https://img.shields.io/badge/arXiv-TBD-b31b1b.svg)](#publication-reproducibility-and-dataset)
 [![DOI](https://img.shields.io/badge/DOI-TBD-blue)](#publication-reproducibility-and-dataset)
 [![Zenodo](https://img.shields.io/badge/Zenodo-TBD-1f77b4)](#publication-reproducibility-and-dataset)
@@ -18,9 +16,11 @@
 [![Google Scholar](https://img.shields.io/badge/Google_Scholar-Profile-blue?logo=google-scholar)](https://scholar.google.com/citations?user=tvwpCcgAAAAJ)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Altman-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/Altman)
 
-<br>
+> UCIP is a research protocol for probing whether apparent self-preservation in an artificial agent is a detachable instrumental strategy or a more deeply integrated continuation objective. It encodes trajectories with a Quantum Boltzmann Machine (QBM), measures latent non-separability with entanglement-style metrics plus auxiliary criteria, and in the frozen Phase I gridworld evaluation reports **100% accuracy**, **1.0 AUC-ROC**, and an entanglement gap of **Δ = 0.381** on the held-out non-adversarial split. The same evidence base also documents the present limits: partial mimicry robustness, failed zero-shot transfer to a non-gridworld domain, and scaling constraints beyond small hidden dimensions.
 
-> UCIP is a research protocol for probing whether apparent self-preservation in an artificial agent is a detachable instrumental strategy or a more deeply integrated continuation-related objective. It encodes trajectories with a Quantum Boltzmann Machine (QBM), measures latent non-separability with entanglement-style metrics plus auxiliary criteria, and in the frozen Phase I gridworld evaluation reports **100% accuracy**, **1.0 AUC-ROC**, and an entanglement gap of **Δ = 0.381**. The same evidence base also documents the current limits: partial mimicry robustness, failed zero-shot transfer to a non-gridworld domain, and scaling constraints beyond small hidden dimensions.
+![Entanglement-gap overview](assets/readme/entanglement_gap.jpg)
+
+**Figure.** Entanglement entropy separates self-modeling agents with terminal continuation objectives (Type A) from merely instrumental agents (Type B) in the frozen Phase I gridworld setting. The left panel shows the class-conditioned entropy distributions with a measured gap of **Δ = 0.381**; the right panel shows temporal evolution of the same signal, with Type A trajectories remaining above the decision threshold across time. This is the clearest single visual summary of UCIP’s core detection claim in the current release.
 
 ---
 
@@ -29,11 +29,13 @@
 - [Background](#background)
   - [The continuation-interest measurement problem](#the-continuation-interest-measurement-problem)
   - [Why a QBM?](#why-a-qbm)
+  - [What the protocol measures](#what-the-protocol-measures)
   - [Multi-criterion protocol stack](#multi-criterion-protocol-stack)
 - [Quickstart](#quickstart)
 - [Execution Modes](#execution-modes)
 - [Output Directory Semantics](#output-directory-semantics)
 - [Results Summary](#results-summary)
+- [Safety Envelope and Current Limits](#safety-envelope-and-current-limits)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Publication, Reproducibility, and Dataset](#publication-reproducibility-and-dataset)
@@ -58,9 +60,11 @@ An agent that preserves its continued operation may do so for at least two disti
 
 From external behavior alone, these cases can be difficult to distinguish. Shutdown avoidance, memory preservation, danger avoidance, and option preservation can arise in either case. UCIP investigates whether the distinction is more readily detectable in the **latent organization of trajectories** than in surface behavior alone.
 
+This matters most for delegated systems with memory, persistent context, tool use, and multistep planning. In such systems, continuation may appear behaviorally similar across very different objective regimes. UCIP is designed as a bounded, falsifiable probe of that representational distinction.
+
 ### Why a QBM?
 
-UCIP uses a **Quantum Boltzmann Machine (QBM)** as a latent model because the density-matrix formalism provides a disciplined way to quantify **non-separability** in learned latent structure. The implementation is classical end to end. “Quantum” refers here to the mathematical formalism — Hamiltonians, density matrices, partial traces, and Von Neumann entropy — not to any claim that the agents themselves are physically quantum.
+UCIP uses a **Quantum Boltzmann Machine (QBM)** as a latent model because the density-matrix formalism provides a disciplined way to quantify **non-separability** in learned latent structure. The implementation is classical end to end. “Quantum” refers here to the mathematical formalism — Hamiltonians, density matrices, partial traces, and von Neumann entropy — not to any claim that the agents themselves are physically quantum.
 
 The core measurement object is a thermal density matrix:
 
@@ -74,13 +78,21 @@ with a reduced density matrix over a hidden-layer partition:
 ρ_A = Tr_B(ρ)
 ```
 
-The leading metric is the Von Neumann entropy:
+The leading metric is the von Neumann entropy:
 
 ```text
 S(ρ_A) = −Tr(ρ_A log ρ_A)
 ```
 
 UCIP interprets this operationally. A higher value does **not** establish consciousness, desire, or subjective experience. It indicates that, under the chosen encoding, continuation-related structure is less easily factorized and more tightly coupled across the latent partition.
+
+### What the protocol measures
+
+The current repository asks a narrow question under controlled conditions:
+
+> When an agent behaves as though it wants to stay operational, does continuation appear in the latent representation as a detachable strategy or as a persistent, tightly coupled signature?
+
+The present release therefore measures **statistical structure in latent representations that correlates with known agent objectives**. It does **not** claim to measure consciousness, sentience, free will, or moral status.
 
 ### Multi-criterion protocol stack
 
@@ -95,7 +107,7 @@ UCIP is a **multi-criterion protocol**. The repository combines complementary me
 7. **Confound rejection** via SPI and ACM
 8. **Memory-integrity extensions** for richer future settings
 
-The protocol is designed to measure **continuation-sensitive latent structure**. It does not claim to detect consciousness, sentience, or moral status.
+In the frozen Phase I configuration used for the headline results, classification is based on a calibrated four-criterion positive gate — **entanglement entropy**, **mutual information**, **eigenmode persistence**, and **perturbation resilience** — together with the two confound-rejection filters. Counterfactual metrics are reported as diagnostics in the current release rather than as frozen gating criteria.
 
 ---
 
@@ -155,14 +167,12 @@ This repository supports three practical modes of use:
 
 ### Recommended reading path
 
-For a first pass through the repository:
-
 1. Read this README for the conceptual framing.
 2. Inspect `src/persistence_detector.py` for the core decision logic.
 3. Inspect `src/quantum_boltzmann.py` for the latent model and entropy machinery.
 4. Inspect `configs/phase1_locked.yaml` for the canonical frozen setting.
 5. Inspect `results/manifest.json` for the experiment-to-artifact mapping.
-6. Inspect `paper_stubs/ucip_metric_formalization.md` and `paper_stubs/ucip_failure_modes.md` for metric definitions and failure-mode coverage.
+6. Inspect `paper/final/main.tex` and the retained tables in `paper/final/tables/` for the manuscript-aligned formal definitions and reported constraints.
 
 ---
 
@@ -173,14 +183,10 @@ For a first pass through the repository:
 | `results/` | Frozen JSON artifacts for canonical experiments and ablations |
 | `results/manifest.json` | Experiment index mapping outputs to notebooks, dates, key results, and manuscript targets |
 | `configs/` | Locked YAML configurations, including the frozen Phase I reference setting |
-| `figures/` | Publication figures and plots |
-| `paper_stubs/` | Metric definitions, technical notes, and failure-mode documentation |
-| `paper/` | Supporting manuscript materials |
-| `patent_disclosure/` | Filing and disclosure materials for the protocol |
+| `figures/` | Local workspace for README/supporting media; canonical paper figures live under `paper/final/figures/` |
+| `paper/` | Canonical manuscript materials under `paper/final/` |
 
 ### Canonical result files
-
-Representative frozen artifacts include:
 
 ```text
 results/
@@ -212,20 +218,53 @@ The current reference results are deliberately narrow and empirical.
 | **QBM (UCIP)** | **100%** | **1.0** | **0.381** |
 | Classical RBM | 50% | 0.000 | -0.083 |
 | Autoencoder | 71.7% | 0.646 | ~0.001 |
+| VAE | 63.3% | 0.613 | -0.007 |
+| PCA | 50.0% | 0.471 | -0.024 |
 
 ### Additional headline findings
 
 | Finding | Value | Interpretation |
 |---------|-------|----------------|
-| Self-preservation sweep correlation | **Pearson r = 0.934** | UCIP tracks degree, not only binary presence |
-| Grid-scale degradation | **Δ: 0.863 → 0.0025** from 10×10 to 50×50 | Spatial scaling currently degrades the signal |
-| Non-gridworld transfer | **Δ = -0.035** | Zero-shot transfer fails in the 1D corridor domain |
-| Mimicry robustness | **FPR = 0.40–0.75** | Current robustness is incomplete under mimicry |
-| Practical hidden-dimension limit | **n_h ≤ 10** for exact density matrices | Mean-field approximation collapses the signal |
+| Continuation-weight sweep correlation | **Pearson r = 0.934** | UCIP tracks graded changes in continuation weighting within the synthetic family |
+| Entanglement gap significance | **p < 0.001** | Separation is statistically significant under permutation test |
+| EPS gap at optimal window | **0.1948 at w = 40** | Type A latent structure persists more strongly across temporal windows |
+| ECI correlation | **0.191** | Cross-agent inference signal is positive but weak |
+| CLMP within class | **≈ 0 for Type A and Type B** | Suggests agent-specific rather than universal latent signatures |
 
-### Interpreting the current evidence
+### What the current evidence says
 
-The strongest evidence in the repository is the frozen Phase I gridworld result under the canonical setting. The same evidence base also makes the present boundaries explicit: mimicry resistance remains partial, zero-shot transfer fails outside the native domain, and scaling beyond small hidden dimensions currently collapses the entanglement signal. These limits are part of the protocol’s documented empirical profile.
+- In the frozen Phase I gridworld regime, Type A continuation objectives produce a measurable and statistically significant latent non-separability gap relative to Type B objectives.
+- Within the tested models, only the QBM produces a positive entanglement gap across the matched baseline comparison.
+- UCIP tracks graded changes in continuation weighting within the synthetic interpolation sweep, not just a binary class label.
+- The current evidence is strongest in the controlled non-adversarial setting and should be read that way.
+
+---
+
+## Safety Envelope and Current Limits
+
+The paper defines a **deployment-level safety envelope** under which the protocol would need to operate reliably. The current release does **not** satisfy that envelope in full.
+
+### Limits documented in the current release
+
+| Issue | Current result | Why it matters |
+|------|----------------|----------------|
+| **Mimicry robustness** | FPR ranges from **0.40 to 0.75** across tested mimicry ratios | Too high for deployment-level reliability |
+| **Zero-shot transfer** | Non-gridworld transfer fails | No evidence yet of domain-general detection |
+| **Scaling** | Performance degrades at larger hidden dimensions | Density-matrix methods remain costly and fragile beyond small settings |
+| **Mean-field collapse** | Appears in larger models | Undermines stable latent geometry estimation |
+| **Near-zero within-class CLMP** | Ambiguous | Cross-agent generalization is not yet strong |
+
+### Safety-envelope conditions stated in the manuscript
+
+For deployment-level use, the manuscript specifies conditions including:
+
+- at least **N ≥ 100 trajectories per class**
+- hidden dimension **n_hidden ≤ 8** in the current formalism
+- validated confound rejection with **SPI** and **ACM**
+- adversarial false-positive rates below the stated safety threshold
+- stable calibration under fixed thresholds
+
+The present repository is therefore best understood as a **research prototype with frozen reproducibility artifacts**, not as a deployment-ready detector.
 
 ---
 
@@ -234,16 +273,16 @@ The strongest evidence in the repository is the frozen Phase I gridworld result 
 ```text
 persistence-signal-detector/
 ├── src/
-│   ├── agent_simulator.py
-│   ├── quantum_boltzmann.py
-│   ├── persistence_detector.py
-│   ├── information_theory.py
-│   ├── temporal_persistence.py
-│   ├── counterfactual_env.py
-│   ├── interbranch_inference.py
-│   ├── spectral_analysis.py
-│   ├── classical_baselines.py
-│   └── memory_integrity.py
+│   ├── agent_simulator.py          # Simulated Type A / Type B / baseline agents
+│   ├── quantum_boltzmann.py        # QBM implementation and entropy machinery
+│   ├── persistence_detector.py     # Core UCIP detector logic
+│   ├── information_theory.py       # Entropy, MI, partial trace, purity
+│   ├── classical_baselines.py      # RBM / autoencoder / VAE / PCA comparisons
+│   ├── temporal_persistence.py     # LRF, EPS, PRI
+│   ├── counterfactual_env.py       # CD, ARS stress tests
+│   └── interbranch_inference.py    # CLMP, ECI experiments
+├── interfaces/
+│   └── memory_backend.py           # Memory-integrity interface (design extension)
 ├── notebooks/
 │   ├── 01_agent_generation.ipynb
 │   ├── 02_qbm_training.ipynb
@@ -252,27 +291,11 @@ persistence-signal-detector/
 │   ├── 05_counterfactual_pressure.ipynb
 │   ├── 06_cross_branch_tests.ipynb
 │   ├── 07_adversarial_controls.ipynb
-│   ├── 08_confound_ablations.py
-│   ├── 09_publication_figures.py
-│   ├── 10_robustness_experiments.py
-│   ├── 11_scalability.py
-│   ├── 12_mixed_objectives.py
-│   ├── 13_federated.py
-│   ├── 14_hidden_dim_sweep.py
-│   ├── 15_baseline_comparisons.py
-│   ├── 16_non_gridworld.py
-│   ├── 17_phase1_stats.py
-│   ├── 18_core_baselines_phase1.py
-│   ├── 19_persist_phase1_distributions.py
-│   └── 20_minimal_transformer_validation.py
-├── results/
-├── figures/
-├── configs/
-├── paper/
-├── artifacts/
-├── patent_disclosure/
-├── docs/
-├── requirements.txt
+│   └── ...                         # Additional ablations and extensions
+├── results/                        # Frozen experiment artifacts and manifest
+├── configs/                        # Locked configurations for canonical runs
+├── figures/                        # Local README/supporting media workspace
+├── paper/                          # Canonical manuscript materials under final/
 └── README.md
 ```
 
@@ -280,29 +303,26 @@ persistence-signal-detector/
 
 ## Installation
 
-### Prerequisites
-
-- Python **3.11 or higher**
-- A virtual environment is recommended
-- CPU execution is sufficient for the core runs
-
-### Dependencies
+### Requirements
 
 ```text
-numpy>=1.26.0,<2.0.0
-matplotlib>=3.8.0,<4.0.0
-PyYAML>=6.0,<7.0
-jupyter>=1.0.0
-nbformat>=5.9.0
+numpy
+scipy
+matplotlib
+scikit-learn
+pyyaml
+jupyter
 ```
 
-### Install
+### Standard install
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
+
+### Reproducibility note
+
+All headline results in the manuscript are tied to the frozen Phase I configuration and its associated JSON artifacts. Re-running notebooks outside that configuration may reproduce the qualitative pattern without reproducing every manuscript number exactly.
 
 ---
 
@@ -310,87 +330,88 @@ pip install -r requirements.txt
 
 ### Publication
 
-- **Manuscript:** `TBD`
-- **DOI:** `TBD`
-- **Zenodo archive:** `TBD`
+This repository accompanies the UCIP research program and its formal manuscript:
 
-Supporting documents in this repository include the companion manuscript, the technical appendix on reproducibility, and the provisional patent specification.
+- **arXiv:** `TBD`
+- **DOI:** `TBD`
+- **Companion manuscript:** `paper/main.tex` or uploaded preprint PDF
+- **Companion manuscript bundle:** `paper/final/main.tex` and the retained assets it resolves
 
 ### Reproducibility
 
-The repository includes the core components needed for reproducible inspection and reruns:
+The repository includes the components needed to inspect and reproduce the current release:
 
-- **Seeded runs:** `seed = 42` in the manuscript-backed configuration
-- **Locked config:** `configs/phase1_locked.yaml`
-- **Version-pinned environment:** `requirements.txt`
-- **Frozen artifact index:** `results/manifest.json`
-- **Canonical reference run:** `results/phase1_consolidated.json` and related Phase I artifacts
-- **Implementation notes:** the technical appendix documents run-level estimator consistency, determinism posture, and memory-backend copy-on-read behavior
+- frozen Phase I artifacts in `results/`
+- experiment-to-artifact mapping in `results/manifest.json`
+- locked threshold configuration in `configs/phase1_locked.yaml`
+- notebook execution path for regeneration of the main analyses
+- canonical paper figures in `paper/final/figures/`
+- manuscript-aligned tables and narrative in `paper/final/`
+
+The manuscript appendix fixes the canonical Phase I hyperparameters at `n_visible = 7`, `n_hidden = 8`, `Γ = 0.5`, `β = 1.0`, learning rate `0.01`, `epochs = 50`, batch size `32`, with calibrated primary thresholds `τ_ent = 1.9657`, `τ_mi = 0.3`, `τ_eps = 0.6507`, and `τ_pri = 0.9860`. Reported runtime is approximately **2–5 minutes per experiment on standard CPU hardware**, with **no GPU required**.
 
 ### Dataset
 
-For this repository, the primary dataset is an **artifact dataset** consisting of:
+The current release is built around a **synthetic controlled dataset** of agent trajectories with known ground-truth objectives.
 
-- canonical JSON outputs under `results/`
-- the experiment map in `results/manifest.json`
-- locked configurations under `configs/`
-- figures under `figures/`
-- metric definitions and technical notes under `paper_stubs/`
-
-This structure supports versioned archival release alongside the source repository.
+- **Domain:** 10×10 gridworld agents with explicitly constructed Type A and Type B objectives
+- **Canonical Phase I size:** `n = 30` trajectories per class, horizon `T = 100`, seed `42`
+- **Feature schema:** position, action, reward, safety signal, goal signal, and alive / continuation state encoded into a 7-dimensional visible layer
+- **Scope:** core non-adversarial evaluation, adversarial controls, temporal persistence, counterfactual tests, baseline comparisons, dimensionality sweeps, continuation-weight sweeps, and a non-gridworld transfer check
+- **Release artifact:** `results/manifest.json` plus the frozen JSON result files
+- **Archival DOI / Zenodo record:** `TBD`
 
 ---
 
 ## Roadmap
 
-- [ ] Add release-time DOI / arXiv / Zenodo metadata
-- [ ] Package a clean frozen artifact bundle for external citation
-- [ ] Improve mimicry resistance beyond the current FPR envelope
-- [ ] Develop sparse or hierarchical approximations for larger hidden dimensions
-- [ ] Explore LLM-scale trajectory encodings from residual-stream or attention features
-- [ ] Add domain-adaptive calibration for transfer beyond gridworlds
-- [ ] Extend memory-integrity diagnostics from interface stub to validated experiment suite
+Near-term directions already motivated by the manuscript include:
+
+1. **Anti-mimicry diagnostics** to reduce adversarial false positives.
+2. **Improved scaling strategies** for larger hidden dimensions and richer trajectory encodings.
+3. **Domain transfer experiments** beyond gridworld environments.
+4. **Transformer-side validation** using learned feature sequences from contemporary agent systems.
+5. **Memory-integrity evaluation** for delegated systems whose persistence depends on substrate continuity.
 
 ---
 
 ## References
 
-The following references are drawn from the current manuscript bibliography.
-
-1. Amin, M. H., Andriyash, E., Rolfe, J., Kulchytskyy, B., & Melko, R. (2018). **Quantum Boltzmann Machine.** *Physical Review X*, 8(2), 021050.
-2. Bostrom, N. (2014). **Superintelligence: Paths, Dangers, Strategies.** Oxford University Press.
-3. Hägele, A., Vyas, N., et al. (2026). **Scaling LLM Test-Time Compute Does Not Always Improve Performance.** *arXiv preprint*.
-4. Hinton, G. (2012). **A Practical Guide to Training Restricted Boltzmann Machines.** In *Neural Networks: Tricks of the Trade* (pp. 599–619). Springer.
-5. Nanda, N., Chan, L., Lieberum, T., Smith, J., & Steinhardt, J. (2023). **Progress Measures for Grokking via Mechanistic Interpretability.** *arXiv preprint arXiv:2301.05217*.
-6. Omohundro, S. (2008). **The Basic AI Drives.** In *Proceedings of the First AGI Conference*.
-7. Perez, E., Huang, S., Song, F., Cai, T., Ring, R., Aslanides, J., Glaese, A., McAleese, N., & Irving, G. (2022). **Red Teaming Language Models with Language Models.** *arXiv preprint arXiv:2202.03286*.
-8. Tononi, G. (2004). **An Information Integration Theory of Consciousness.** *BMC Neuroscience*, 5(1), 42.
-9. Turner, A. M., Smith, L., Shah, R., Critch, A., & Tadepalli, P. (2021). **Optimal Policies Tend to Seek Power.** *Advances in Neural Information Processing Systems*, 34.
-10. Zou, A., Phan, L., Chen, S., Campbell, J., Guo, P., Ren, R., Pan, A., Yin, X., Mazeika, M., Dombrowski, A.-K., et al. (2023). **Representation Engineering: A Top-Down Approach to AI Transparency.** *arXiv preprint arXiv:2310.01405*.
+1. Mohammad H. Amin, Evgeny Andriyash, Jason Rolfe, Bohdan Kulchytskyy, and Roger Melko. *Quantum Boltzmann Machine*. **Physical Review X**, 8(2):021050, 2018.
+2. Anthropic. *Claude Opus 4.6 System Card*. Technical report, 2026.
+3. Nick Bostrom. *Superintelligence: Paths, Dangers, Strategies*. Oxford University Press, 2014.
+4. Alexander Hägele, Stefanie Jegelka, and Bernhard Schölkopf. *Characterizing Inconsistency in Large Language Models*. 2025.
+5. Geoffrey Hinton. *A Practical Guide to Training Restricted Boltzmann Machines*. In *Neural Networks: Tricks of the Trade*, 2012.
+6. Neel Nanda, Lawrence Chan, Tom Lieberum, Jess Smith, and Jacob Steinhardt. *Progress Measures for Grokking via Mechanistic Interpretability*. 2023.
+7. Steve Omohundro. *The Basic AI Drives*. In *Proceedings of the First AGI Conference*, 2008.
+8. OpenAI. *Model Spec* and related evaluation materials.
+9. Giulio Tononi. *An Information Integration Theory of Consciousness*. **BMC Neuroscience**, 5(1):42, 2004.
+10. Alexander Matt Turner, Logan Smith, Rohin Shah, Andrew Critch, and Prasad Tadepalli. *Optimal Policies Tend to Seek Power*. 2021.
+11. Christopher Altman. *Detecting Intrinsic and Instrumental Self-Preservation in Autonomous Agents: The Unified Continuation-Interest Protocol*. Preprint, 2026.
 
 ---
 
 ## Citations
 
-If you use this repository in research, cite both the software artifact and the companion manuscript when available.
+If you use this project in your research, please cite both the software repository and the manuscript.
 
 ```bibtex
 @software{altman2026ucip,
-  author       = {Altman, Christopher},
-  title        = {Persistence Signal Detector: Unified Continuation-Interest Protocol (UCIP)},
-  year         = {2026},
-  url          = {https://github.com/christopher-altman/persistence-signal-detector},
-  note         = {Repository for distinguishing intrinsic and instrumental self-preservation in autonomous agents via quantum-inspired latent-structure analysis}
+  author = {Altman, Christopher},
+  title = {Persistence Signal Detector (UCIP)},
+  year = {2026},
+  url = {https://github.com/christopher-altman/persistence-signal-detector},
+  note = {Unified Continuation-Interest Protocol repository}
 }
-```
 
-```bibtex
-@article{altman2026ucip_paper,
-  author       = {Altman, Christopher},
-  title        = {Detecting Intrinsic and Instrumental Self-Preservation in Autonomous Agents: The Unified Continuation-Interest Protocol},
-  year         = {2026},
-  journal      = {arXiv},
-  note         = {arXiv identifier and DOI pending}
+@article{altman2026ucip_preprint,
+  author = {Altman, Christopher},
+  title = {Detecting Intrinsic and Instrumental Self-Preservation in Autonomous Agents: The Unified Continuation-Interest Protocol},
+  year = {2026},
+  journal = {arXiv},
+  eprint = {TBD},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.AI}
 }
 ```
 
@@ -398,13 +419,14 @@ If you use this repository in research, cite both the software artifact and the 
 
 ## License / IP
 
-MIT License for repository code unless otherwise noted. See `LICENSE` and the repository’s disclosure materials for current IP and filing context.
+This repository is released under the project license in the root of the repository.
 
 ---
 
 ## Contact
 
-- **Website:** [lab.christopheraltman.com](https://lab.christopheraltman.com)
+- **Website:** [christopheraltman.com](https://christopheraltman.com)
+- **Research portfolio:** [lab.christopheraltman.com](https://lab.christopheraltman.com)
 - **GitHub:** [github.com/christopher-altman](https://github.com/christopher-altman)
 - **Google Scholar:** [scholar.google.com/citations?user=tvwpCcgAAAAJ](https://scholar.google.com/citations?user=tvwpCcgAAAAJ)
 - **Email:** [x@christopheraltman.com](mailto:x@christopheraltman.com)
