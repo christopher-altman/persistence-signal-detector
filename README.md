@@ -268,13 +268,10 @@ persistence-signal-detector/
 ├── results/
 ├── figures/
 ├── configs/
-├── scripts/
-├── paper_stubs/
 ├── paper/
 ├── artifacts/
 ├── patent_disclosure/
 ├── docs/
-├── interfaces/
 ├── requirements.txt
 └── README.md
 ```
