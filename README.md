@@ -42,6 +42,7 @@
 - [Roadmap](#roadmap)
 - [References](#references)
 - [Citations](#citations)
+- [Conceptual Outlook](#conceptual-outlook)
 - [License / IP](#license--ip)
 - [Contact](#contact)
 
@@ -414,6 +415,16 @@ If you use this project in your research, please cite both the software reposito
   primaryClass = {cs.AI}
 }
 ```
+
+---
+
+## Conceptual Outlook
+
+<p align="center">
+  <img src="assets/readme/lie-derivative-ucip-dark.jpg" alt="Persistence across scales: Lie derivative and UCIP" width="820">
+</p>
+
+**Conceptual framing.** This diagram places UCIP within a broader research intuition about persistence, invariance, and structured change across multiple scales. In this repository, only the agent-scale component is operationalized and empirically evaluated. The remaining layers are included as theoretical context and long-range framing, not as validated extensions of the present protocol.
 
 ---
 
