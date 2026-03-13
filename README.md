@@ -335,7 +335,7 @@ All headline results in the manuscript are tied to the frozen Phase I configurat
 
 This repository accompanies the UCIP research program and its formal manuscript:
 
-- **arXiv:** `https://arxiv.org/abs/2603.11382`
+- **arXiv:** [`arXiv:2603.11382`](https://arxiv.org/abs/2603.11382)
 - **DOI:** `10.5281/zenodo.18993237`
 - **Companion manuscript:** `paper/main.tex` or uploaded preprint PDF
 - **Companion manuscript bundle:** `paper/final/main.tex` and the retained assets it resolves
@@ -390,7 +390,7 @@ Near-term directions already motivated by the manuscript include:
 8. OpenAI. *Model Spec* and related evaluation materials.
 9. Giulio Tononi. *An Information Integration Theory of Consciousness*. **BMC Neuroscience**, 5(1):42, 2004.
 10. Alexander Matt Turner, Logan Smith, Rohin Shah, Andrew Critch, and Prasad Tadepalli. *Optimal Policies Tend to Seek Power*. 2021.
-11. Christopher Altman. *Detecting Intrinsic and Instrumental Self-Preservation in Autonomous Agents: The Unified Continuation-Interest Protocol*. arXiv Preprint, [arXiv:2603.11382](https://arxiv.org/abs/2603.11382), 2026.
+11. Christopher Altman. *Detecting Intrinsic and Instrumental Self-Preservation in Autonomous Agents: The Unified Continuation-Interest Protocol*. arXiv Preprint, arXiv:2603.11382, 2026.
 
 ---
 
