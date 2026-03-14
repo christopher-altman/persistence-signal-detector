@@ -97,5 +97,11 @@
     "n_boot": 2000,
     "boot_delta_mean": 0.5768711719169014,
     "boot_delta_std": 0.07765473924607139
+  },
+  "artifact_meta": {
+    "normalized_by": "Codex retained artifact normalization pass",
+    "normalization_scope": "provenance_annotation",
+    "normalization_date": "2026-03-14T13:19:16Z",
+    "normalization_note": "artifact_meta was added during the normalization pass and is not part of the original experiment output; this file is canonical only for inferential support fields such as the permutation test, bootstrap CI, and per-trajectory entanglement arrays, and not for the frozen headline Phase I delta."
   }
 }

@@ -54,7 +54,7 @@
   "safety_envelope": {
     "sufficient_data": {
       "status": "PASS",
-      "detail": "N=100 per class, T=100"
+      "detail": "N=30 per class, T=100"
     },
     "calibrated_gamma": {
       "status": "PASS",
@@ -85,5 +85,11 @@
     "pass": 6,
     "partial": 1,
     "fail": 0
+  },
+  "artifact_meta": {
+    "normalized_by": "Codex retained artifact normalization pass",
+    "normalization_scope": "metadata_contradiction_repair",
+    "normalization_date": "2026-03-14T13:19:16Z",
+    "normalization_note": "artifact_meta was added during the normalization pass and is not part of the original experiment output; mimicry_fpr, high_entropy_fpr, and gamma_sweep remain notebook-07 diagnostic outputs while safety_envelope and safety_envelope_summary remain copied from the canonical Phase I summary after repairing the stale sufficient-data detail."
   }
 }

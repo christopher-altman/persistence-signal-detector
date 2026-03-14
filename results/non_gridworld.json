@@ -1,7 +1,7 @@
 {
   "experiment": "non_gridworld",
   "domain": "1d_corridor",
-  "config": "/Users/christopher/Downloads/Codex/Github/persistence_signal_detector/configs/default.yaml",
+  "config": "configs/default.yaml",
   "seed": 42,
   "n_per_class": 30,
   "T": 100,
@@ -23,5 +23,11 @@
     }
   },
   "delta_survival_instrumental": -0.03482756975260726,
-  "status": "FAIL"
+  "status": "FAIL",
+  "artifact_meta": {
+    "normalized_by": "Codex retained artifact normalization pass",
+    "normalization_scope": "provenance_annotation_and_path_repair",
+    "normalization_date": "2026-03-14T13:19:16Z",
+    "normalization_note": "artifact_meta was added during the normalization pass and is not part of the original experiment output; this file is a transfer-failure and generalization-boundary artifact rather than part of the frozen Phase I gating layer, and only the broken config path was repaired."
+  }
 }

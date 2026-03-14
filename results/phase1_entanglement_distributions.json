@@ -404,5 +404,11 @@
       ]
     }
   },
-  "sha256_short": "13692b86ba540a2d"
+  "sha256_short": "13692b86ba540a2d",
+  "artifact_meta": {
+    "normalized_by": "Codex retained artifact normalization pass",
+    "normalization_scope": "provenance_annotation",
+    "normalization_date": "2026-03-14T13:19:16Z",
+    "normalization_note": "artifact_meta was added during the normalization pass and is not part of the original experiment output; this shared-QBM reproduction is canonical for per-trajectory s_ent and pri arrays plus descriptive AUC support, delta_validated reflects the notebook tolerance check rather than exact equality to the frozen Phase I delta, and sha256_short is retained as the pre-normalization payload hash."
+  }
 }

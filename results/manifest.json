@@ -1,7 +1,13 @@
 {
-  "version": "2.0",
-  "description": "Public release index for retained UCIP experiments. Only public-facing retained artifacts are listed here.",
-  "last_updated": "2026-03-10",
+  "version": "2.0.1",
+  "description": "Public release index for retained UCIP experiments. This file remains the experiment index; artifact authority, overlap resolution, and normalization notes live in the authority files listed below.",
+  "last_updated": "2026-03-14T13:19:16Z",
+  "normalization_note": "Version 2.0.1 is a provenance-and-authority normalization update only; it does not denote a new experimental release.",
+  "authority_files": {
+    "artifact_manifest": "ARTIFACT_MANIFEST.md",
+    "artifact_authority_map": "ARTIFACT_AUTHORITY_MAP.json",
+    "artifact_notes": "ARTIFACT_NOTES.md"
+  },
   "experiments": {
     "phase1_consolidated": {
       "file": "phase1_consolidated.json",

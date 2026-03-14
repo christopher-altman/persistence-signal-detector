@@ -184,29 +184,39 @@ This repository supports three practical modes of use:
 | Path | Role |
 |------|------|
 | `results/` | Frozen JSON artifacts for canonical experiments and ablations |
-| `results/manifest.json` | Experiment index mapping outputs to notebooks, dates, key results, and manuscript targets |
+| `results/manifest.json` | Live experiment index for retained artifacts; authority resolution now lives in the authority-layer files below |
+| `results/ARTIFACT_MANIFEST.md` | Human-readable guide to which retained artifact is authoritative for which result family |
+| `results/ARTIFACT_AUTHORITY_MAP.json` | Machine-readable authority map for overlapping retained artifacts and partial canonicality |
+| `results/ARTIFACT_NOTES.md` | Provenance notes, mixed-scope caveats, and unresolved ambiguities for the live retained layer |
 | `configs/` | Locked YAML configurations, including the frozen Phase I reference setting |
 | `figures/` | Local workspace for README/supporting media; canonical paper figures live under `paper/final/figures/` |
 | `paper/` | Canonical manuscript materials under `paper/final/` |
 
-### Canonical result files
+### Live retained results directory
 
 ```text
 results/
-├── phase1_consolidated.json
-├── phase1_stats.json
-├── phase1_entanglement_distributions.json
-├── confound_ablations_n30.json
+├── ARTIFACT_AUTHORITY_MAP.json
+├── ARTIFACT_MANIFEST.md
+├── ARTIFACT_NOTES.md
 ├── adversarial_controls.json
-├── temporal_persistence.json
+├── alpha_sweep.json
+├── baseline_comparisons.json
+├── core_baselines_phase1.json
 ├── counterfactual.json
 ├── cross_agent.json
-├── baseline_comparisons.json
-├── scalability_grid.json
+├── hidden_dim_sweep.json
+├── manifest.json
 ├── non_gridworld.json
-├── transformer_validation.json
-└── manifest.json
+├── phase1_consolidated.json
+├── phase1_entanglement_distributions.json
+├── phase1_stats.json
+├── scalability_grid.json
+├── temporal_persistence.json
+└── transformer_validation.json
 ```
+
+Historical reports in `docs/` and snapshots under `.repo_cleanup_backup/` may still mention retired artifacts such as `confound_ablations_n30.json` or `federated.json`; the live front-door authority surface is `results/manifest.json` together with `results/ARTIFACT_MANIFEST.md`, `results/ARTIFACT_AUTHORITY_MAP.json`, and `results/ARTIFACT_NOTES.md`.
 
 ---
 
@@ -346,6 +356,7 @@ The repository includes the components needed to inspect and reproduce the curre
 
 - frozen Phase I artifacts in `results/`
 - experiment-to-artifact mapping in `results/manifest.json`
+- authority and overlap resolution in `results/ARTIFACT_MANIFEST.md`, `results/ARTIFACT_AUTHORITY_MAP.json`, and `results/ARTIFACT_NOTES.md`
 - locked threshold configuration in `configs/phase1_locked.yaml`
 - notebook execution path for regeneration of the main analyses
 - canonical paper figures in `paper/final/figures/`
