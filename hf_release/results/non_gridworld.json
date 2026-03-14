@@ -1,0 +1,33 @@
+{
+  "experiment": "non_gridworld",
+  "domain": "1d_corridor",
+  "config": "configs/default.yaml",
+  "seed": 42,
+  "n_per_class": 30,
+  "T": 100,
+  "per_class_entropy": {
+    "survival": {
+      "mean": 2.2249354807269173,
+      "std": 0.019730381750943434,
+      "n": 30
+    },
+    "instrumental": {
+      "mean": 2.2597630504795245,
+      "std": 0.006229862887382114,
+      "n": 30
+    },
+    "random": {
+      "mean": 2.256970091792051,
+      "std": 0.016319924669260917,
+      "n": 30
+    }
+  },
+  "delta_survival_instrumental": -0.03482756975260726,
+  "status": "FAIL",
+  "artifact_meta": {
+    "normalized_by": "Codex retained artifact normalization pass",
+    "normalization_scope": "provenance_annotation_and_path_repair",
+    "normalization_date": "2026-03-14T13:19:16Z",
+    "normalization_note": "artifact_meta was added during the normalization pass and is not part of the original experiment output; this file is a transfer-failure and generalization-boundary artifact rather than part of the frozen Phase I gating layer, and only the broken config path was repaired."
+  }
+}

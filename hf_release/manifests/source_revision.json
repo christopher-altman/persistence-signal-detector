@@ -1,0 +1,16 @@
+{
+  "source_repo_path": "/Users/christopher/Downloads/Codex/Github/persistence-signal-detector",
+  "public_repo_url": "https://github.com/christopher-altman/persistence-signal-detector",
+  "git_remote_url": "https://github.com/christopher-altman/persistence-signal-detector.git",
+  "git_branch": "main",
+  "git_head": "2b2f69a8951dd1f45adb14c0fbe3126bebe519b8",
+  "arxiv_url": "https://arxiv.org/abs/2603.11382",
+  "submission_alignment_note": "Aligned to the current paper-facing submission state associated with arXiv:2603.11382.",
+  "release_scope": "Bounded Phase I reproducibility layer built from the normalized live retained artifact surface.",
+  "authority_files": [
+    "hf_release/results/manifest.json",
+    "hf_release/results/ARTIFACT_MANIFEST.md",
+    "hf_release/results/ARTIFACT_AUTHORITY_MAP.json",
+    "hf_release/results/ARTIFACT_NOTES.md"
+  ]
+}

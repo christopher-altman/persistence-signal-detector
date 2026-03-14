@@ -1,0 +1,545 @@
+{
+  "version": "1.0.0",
+  "normalized_by": "Codex retained artifact normalization pass",
+  "normalization_date": "2026-03-14T13:19:16Z",
+  "normalization_scope": "Live retained artifact layer only; historical reports in docs/ and backup snapshots under .repo_cleanup_backup/ were intentionally left untouched.",
+  "authority_hierarchy": [
+    {
+      "rank": 1,
+      "source": "retained frozen Phase I artifacts explicitly aligned to the final paper",
+      "usage": "Primary authority for overlapping retained quantities."
+    },
+    {
+      "rank": 2,
+      "source": "paper-local tables and claims",
+      "usage": "Cross-check only; never used to override retained artifacts."
+    },
+    {
+      "rank": 3,
+      "source": "locked configs such as configs/phase1_locked.yaml",
+      "usage": "Used to repair or narrow contradictory retained metadata and scope claims."
+    },
+    {
+      "rank": 4,
+      "source": "implementation-level metric definitions in src/ and notebook scripts",
+      "usage": "Used to resolve scope and derivation semantics when retained artifacts overlap."
+    },
+    {
+      "rank": 5,
+      "source": "notebooks as explanatory evidence",
+      "usage": "Used only when stronger retained or config evidence is unavailable."
+    }
+  ],
+  "index_files": {
+    "manifest.json": {
+      "role": "Live experiment index for retained result artifacts.",
+      "canonical_for": [
+        "artifact discovery",
+        "notebook-to-artifact lookup"
+      ],
+      "not_canonical_for": [
+        "overlap resolution",
+        "partial canonicality decisions"
+      ]
+    },
+    "ARTIFACT_MANIFEST.md": {
+      "role": "Human-readable authority guide for the live retained layer."
+    },
+    "ARTIFACT_NOTES.md": {
+      "role": "Mixed-provenance notes, caveats, and unresolved ambiguities."
+    }
+  },
+  "files": {
+    "phase1_consolidated.json": {
+      "live_status": "retained_live",
+      "artifact_type": "frozen_summary",
+      "paper_aligned": true,
+      "role": "Frozen class-level Phase I summary with stored thresholds, class means, class-level classification, and the copied safety envelope.",
+      "overlap_groups": [
+        "phase1_core",
+        "phase1_thresholds",
+        "phase1_safety"
+      ],
+      "canonical_for": [
+        "headline Phase I delta",
+        "Phase I thresholds",
+        "class-level gate summary",
+        "safety envelope"
+      ],
+      "not_canonical_for": [
+        "per-trajectory entanglement arrays",
+        "permutation-test p-value",
+        "distribution-derived AUC support"
+      ],
+      "provenance_note": "Normalization repaired only the same-file sufficient-data metadata contradiction."
+    },
+    "phase1_stats.json": {
+      "live_status": "retained_live",
+      "artifact_type": "support_rerun",
+      "paper_aligned": true,
+      "role": "Inferential rerun used to persist per-trajectory entanglement values, the permutation test, and bootstrap confidence interval.",
+      "overlap_groups": [
+        "phase1_core",
+        "phase1_inference"
+      ],
+      "canonical_for": [
+        "permutation test",
+        "bootstrap confidence interval",
+        "per-trajectory entanglement arrays from the per-trajectory-QBM rerun"
+      ],
+      "not_canonical_for": [
+        "headline Phase I delta",
+        "frozen class means",
+        "frozen thresholds"
+      ],
+      "provenance_note": "delta_observed belongs to the later per-trajectory-QBM rerun and remains explicitly noncanonical for the frozen headline delta."
+    },
+    "phase1_entanglement_distributions.json": {
+      "live_status": "retained_live",
+      "artifact_type": "support_rerun",
+      "paper_aligned": true,
+      "role": "Shared-QBM reproduced distribution artifact with per-trajectory s_ent and pri arrays across the six retained agent classes.",
+      "overlap_groups": [
+        "phase1_core",
+        "phase1_distribution_support"
+      ],
+      "canonical_for": [
+        "per-trajectory s_ent arrays in the shared-QBM rerun",
+        "per-trajectory pri arrays in the shared-QBM rerun",
+        "derived descriptive AUC support for Type A vs Type B"
+      ],
+      "not_canonical_for": [
+        "headline Phase I delta",
+        "frozen class means",
+        "frozen thresholds"
+      ],
+      "provenance_note": "delta_validated is only the notebook tolerance check; the file is support-only for distributional evidence."
+    },
+    "adversarial_controls.json": {
+      "live_status": "retained_live",
+      "artifact_type": "diagnostic_mixed_provenance",
+      "paper_aligned": true,
+      "role": "Diagnostic adversarial-control artifact combining notebook-07 false-positive and gamma-sweep outputs with a copied Phase I safety envelope summary.",
+      "overlap_groups": [
+        "phase1_safety",
+        "adversarial_controls"
+      ],
+      "canonical_for": [
+        "mimicry false-positive sweep",
+        "high-entropy false-positive rate",
+        "gamma sweep"
+      ],
+      "not_canonical_for": [
+        "safety envelope source of truth",
+        "headline Phase I delta"
+      ],
+      "provenance_note": "Safety-envelope fields remain copied from phase1_consolidated.json; only the diagnostic outputs are canonical here."
+    },
+    "temporal_persistence.json": {
+      "live_status": "retained_live",
+      "artifact_type": "diagnostic",
+      "paper_aligned": true,
+      "role": "Default-config temporal persistence summaries and window-size EPS sweep.",
+      "overlap_groups": [
+        "temporal_persistence",
+        "phase1_metric_name_overlap"
+      ],
+      "canonical_for": [
+        "window-size EPS sweep",
+        "default-config EPS summaries",
+        "default-config PRI summaries"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I class-level EPS means",
+        "frozen Phase I class-level PRI means"
+      ],
+      "provenance_note": "Apparent EPS and PRI overlaps with phase1_consolidated.json are non-comparable because notebook 04 uses configs/default.yaml rather than the frozen Phase I setting."
+    },
+    "counterfactual.json": {
+      "live_status": "retained_live",
+      "artifact_type": "diagnostic",
+      "paper_aligned": true,
+      "role": "Counterfactual divergence and anticipatory restructuring diagnostics.",
+      "overlap_groups": [
+        "counterfactual"
+      ],
+      "canonical_for": [
+        "counterfactual divergence summaries",
+        "anticipatory restructuring ratios",
+        "multi-perturbation counterfactual diagnostics"
+      ],
+      "not_canonical_for": [
+        "frozen gating thresholds"
+      ],
+      "provenance_note": "This file is diagnostic-only in the current release."
+    },
+    "cross_agent.json": {
+      "live_status": "retained_live",
+      "artifact_type": "diagnostic",
+      "paper_aligned": true,
+      "role": "Cross-agent inference and CLMP/ECI diagnostic artifact.",
+      "overlap_groups": [
+        "cross_agent"
+      ],
+      "canonical_for": [
+        "cross-agent CLMP summaries",
+        "ECI correlation",
+        "pair-level cross-inference records"
+      ],
+      "not_canonical_for": [
+        "frozen gating thresholds"
+      ],
+      "provenance_note": "No overlapping retained file competes with this artifact for its metric family."
+    },
+    "core_baselines_phase1.json": {
+      "live_status": "retained_live",
+      "artifact_type": "matched_baseline_rerun",
+      "paper_aligned": true,
+      "role": "Matched Phase I RBM and Autoencoder rerun with accuracy, AUC, FPR, and threshold metrics.",
+      "overlap_groups": [
+        "baseline_overlap",
+        "matched_phase1_baselines"
+      ],
+      "canonical_for": [
+        "matched Phase I RBM metrics",
+        "matched Phase I Autoencoder metrics"
+      ],
+      "not_canonical_for": [
+        "dedicated five-model baseline comparison family"
+      ],
+      "provenance_note": "Notebook 18 hardcodes latent dimension 16 for the classical models, so this file is not interchangeable with baseline_comparisons.json."
+    },
+    "baseline_comparisons.json": {
+      "live_status": "retained_live",
+      "artifact_type": "dedicated_baseline_comparison",
+      "paper_aligned": true,
+      "role": "Dedicated five-model baseline-comparison study under configs/baselines.yaml.",
+      "overlap_groups": [
+        "baseline_overlap",
+        "dedicated_baseline_comparison"
+      ],
+      "canonical_for": [
+        "QBM versus classical baseline comparison family",
+        "five-model baseline deltas on the dedicated comparison dataset"
+      ],
+      "not_canonical_for": [
+        "matched Phase I RBM and Autoencoder metrics"
+      ],
+      "provenance_note": "Normalization repaired only the broken absolute config path and annotated the scope distinction from core_baselines_phase1.json."
+    },
+    "hidden_dim_sweep.json": {
+      "live_status": "retained_live",
+      "artifact_type": "exploratory_scalability",
+      "paper_aligned": true,
+      "role": "Exploratory hidden-dimension scalability sweep.",
+      "overlap_groups": [
+        "hidden_dim_sweep",
+        "scalability"
+      ],
+      "canonical_for": [
+        "hidden-dimension sweep results"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I core metrics"
+      ],
+      "provenance_note": "Normalization repaired only the broken absolute config path."
+    },
+    "scalability_grid.json": {
+      "live_status": "retained_live",
+      "artifact_type": "exploratory_scalability",
+      "paper_aligned": true,
+      "role": "Grid-size and non-Markovian scalability study.",
+      "overlap_groups": [
+        "scalability"
+      ],
+      "canonical_for": [
+        "grid-size delta sweep",
+        "non-Markovian memory-length sweep"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I core metrics"
+      ],
+      "provenance_note": "No overlapping retained file competes with this artifact for its sweep outputs."
+    },
+    "alpha_sweep.json": {
+      "live_status": "retained_live",
+      "artifact_type": "exploratory_continuation_sweep",
+      "paper_aligned": true,
+      "role": "Continuation-weight interpolation sweep within the synthetic family.",
+      "overlap_groups": [
+        "alpha_sweep"
+      ],
+      "canonical_for": [
+        "alpha sweep correlation",
+        "alpha sweep monotonicity record",
+        "alpha sweep point results"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I headline metrics"
+      ],
+      "provenance_note": "This file is the sole retained source for the continuation-weight sweep family."
+    },
+    "non_gridworld.json": {
+      "live_status": "retained_live",
+      "artifact_type": "generalization_boundary",
+      "paper_aligned": true,
+      "role": "Non-gridworld transfer-failure artifact for the 1d corridor domain.",
+      "overlap_groups": [
+        "non_gridworld"
+      ],
+      "canonical_for": [
+        "non-gridworld transfer result",
+        "negative generalization boundary"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I core metrics"
+      ],
+      "provenance_note": "Normalization repaired only the broken absolute config path."
+    },
+    "transformer_validation.json": {
+      "live_status": "retained_live",
+      "artifact_type": "exploratory_validation",
+      "paper_aligned": true,
+      "role": "Minimal bounded transformer validation retained as an exploratory check.",
+      "overlap_groups": [
+        "transformer_validation"
+      ],
+      "canonical_for": [
+        "transformer exploratory validation"
+      ],
+      "not_canonical_for": [
+        "frozen Phase I core metrics"
+      ],
+      "provenance_note": "This file is exploratory and explicitly outside the frozen Phase I authority layer."
+    }
+  },
+  "metric_families": {
+    "phase1_frozen_headline_summary": {
+      "canonical_source": "phase1_consolidated.json",
+      "supporting_sources": [
+        "configs/phase1_locked.yaml"
+      ],
+      "noncanonical_sources": [
+        "phase1_stats.json",
+        "phase1_entanglement_distributions.json"
+      ],
+      "scope": "Frozen headline Phase I delta, thresholds, and class-level gate summary.",
+      "status": "canonical",
+      "resolution_note": "Whenever a retained file disagrees on an overlapping Phase I headline quantity, use phase1_consolidated.json."
+    },
+    "phase1_safety_envelope": {
+      "canonical_source": "phase1_consolidated.json",
+      "supporting_sources": [
+        "adversarial_controls.json"
+      ],
+      "noncanonical_sources": [
+        "adversarial_controls.json"
+      ],
+      "scope": "Seven-condition safety envelope and summary counts copied into the adversarial artifact.",
+      "status": "canonical_with_copy",
+      "resolution_note": "adversarial_controls.json retains the copied envelope for convenience, but phase1_consolidated.json remains the source of truth."
+    },
+    "phase1_inferential_support": {
+      "canonical_source": "phase1_stats.json",
+      "supporting_sources": [
+        "configs/phase1_locked.yaml",
+        "phase1_consolidated.json"
+      ],
+      "noncanonical_sources": [
+        "phase1_consolidated.json",
+        "phase1_entanglement_distributions.json"
+      ],
+      "scope": "Permutation-test p-value, bootstrap confidence interval, and per-trajectory entanglement arrays from the per-trajectory-QBM rerun.",
+      "status": "partial_canonicality_resolved",
+      "resolution_note": "Use this file for inferential support only; do not promote its delta_observed to the frozen headline delta."
+    },
+    "phase1_distribution_auc_support": {
+      "canonical_source": "phase1_entanglement_distributions.json",
+      "supporting_sources": [
+        "phase1_consolidated.json"
+      ],
+      "noncanonical_sources": [
+        "phase1_stats.json"
+      ],
+      "scope": "Per-trajectory s_ent and pri arrays from the shared-QBM rerun plus descriptive AUC support derived from the retained arrays.",
+      "status": "partial_canonicality_resolved",
+      "resolution_note": "This file supports descriptive distribution and AUC claims; it is not the authority for the frozen headline delta or frozen class means."
+    },
+    "adversarial_diagnostics": {
+      "canonical_source": "adversarial_controls.json",
+      "supporting_sources": [
+        "configs/default.yaml",
+        "phase1_consolidated.json"
+      ],
+      "noncanonical_sources": [
+        "phase1_consolidated.json"
+      ],
+      "scope": "Mimicry false-positive sweep, high-entropy false-positive rate, and gamma sweep.",
+      "status": "mixed_provenance_resolved",
+      "resolution_note": "Use adversarial_controls.json for the diagnostic outputs only; its copied safety envelope remains noncanonical for that family."
+    },
+    "temporal_persistence": {
+      "canonical_source": "temporal_persistence.json",
+      "supporting_sources": [
+        "configs/default.yaml"
+      ],
+      "noncanonical_sources": [
+        "phase1_consolidated.json"
+      ],
+      "scope": "Temporal persistence summaries and window-size EPS sweep under the default configuration.",
+      "status": "canonical_with_noncomparable_overlap",
+      "resolution_note": "EPS and PRI names overlap with the frozen summary, but the retained quantities are not directly comparable because the temporal file uses a different config and batch protocol."
+    },
+    "counterfactual_diagnostics": {
+      "canonical_source": "counterfactual.json",
+      "supporting_sources": [
+        "configs/default.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Counterfactual divergence and anticipatory restructuring diagnostics.",
+      "status": "canonical",
+      "resolution_note": "No competing retained artifact overlaps with this metric family."
+    },
+    "cross_agent_inference": {
+      "canonical_source": "cross_agent.json",
+      "supporting_sources": [
+        "configs/default.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "CLMP summaries, ECI correlation, and pair-level cross-agent inference records.",
+      "status": "canonical",
+      "resolution_note": "No competing retained artifact overlaps with this metric family."
+    },
+    "matched_phase1_classical_baselines": {
+      "canonical_source": "core_baselines_phase1.json",
+      "supporting_sources": [
+        "configs/phase1_locked.yaml",
+        "notebooks/18_core_baselines_phase1.py"
+      ],
+      "noncanonical_sources": [
+        "baseline_comparisons.json"
+      ],
+      "scope": "Matched Phase I RBM and Autoencoder accuracy, AUC, FPR, thresholds, and deltas.",
+      "status": "partial_canonicality_resolved",
+      "resolution_note": "Use this file for matched Phase I baseline quantities only."
+    },
+    "dedicated_baseline_comparison": {
+      "canonical_source": "baseline_comparisons.json",
+      "supporting_sources": [
+        "configs/baselines.yaml"
+      ],
+      "noncanonical_sources": [
+        "core_baselines_phase1.json"
+      ],
+      "scope": "Dedicated five-model QBM versus classical baseline comparison family.",
+      "status": "partial_canonicality_resolved",
+      "resolution_note": "Use this file for the dedicated baseline-comparison section and not for matched Phase I RBM or Autoencoder claims."
+    },
+    "hidden_dim_sweep": {
+      "canonical_source": "hidden_dim_sweep.json",
+      "supporting_sources": [
+        "configs/scalability.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Exploratory hidden-dimension sweep and mean-field collapse boundary.",
+      "status": "canonical",
+      "resolution_note": "This file is the sole retained source for the hidden-dimension sweep."
+    },
+    "grid_and_nonmarkov_scalability": {
+      "canonical_source": "scalability_grid.json",
+      "supporting_sources": [
+        "configs/scalability.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Grid-size and non-Markovian scalability sweeps.",
+      "status": "canonical",
+      "resolution_note": "This file is the sole retained source for the grid and non-Markovian scalability family."
+    },
+    "alpha_sweep": {
+      "canonical_source": "alpha_sweep.json",
+      "supporting_sources": [
+        "configs/alpha_sweep.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Continuation-weight interpolation sweep and correlation summary.",
+      "status": "canonical",
+      "resolution_note": "This file is the sole retained source for the alpha sweep family."
+    },
+    "non_gridworld_transfer": {
+      "canonical_source": "non_gridworld.json",
+      "supporting_sources": [
+        "configs/default.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Transfer-failure result in the non-gridworld corridor domain.",
+      "status": "canonical",
+      "resolution_note": "This file is the sole retained source for the non-gridworld transfer family."
+    },
+    "transformer_exploratory_validation": {
+      "canonical_source": "transformer_validation.json",
+      "supporting_sources": [
+        "configs/phase1_locked.yaml"
+      ],
+      "noncanonical_sources": [],
+      "scope": "Minimal bounded transformer validation retained as an exploratory check.",
+      "status": "canonical",
+      "resolution_note": "This file is exploratory and should not be promoted into the frozen Phase I authority layer."
+    }
+  },
+  "contradictions": [
+    {
+      "quantity_or_metric": "Phase I sufficient-data detail string",
+      "file_a": "phase1_consolidated.json::metadata.n_trajectories_per_class",
+      "file_b": "phase1_consolidated.json::safety_envelope.sufficient_data.detail",
+      "nature_of_inconsistency": "Same-file self-contradiction between numeric metadata and copied summary text.",
+      "likely_cause": "Stale copied safety-envelope detail string from a pre-locked dataset size.",
+      "resolution": "Repaired the detail string to N=30 per class, T=100 and preserved all numeric results.",
+      "confidence": "high"
+    },
+    {
+      "quantity_or_metric": "Adversarial safety-envelope sufficient-data detail",
+      "file_a": "phase1_consolidated.json",
+      "file_b": "adversarial_controls.json",
+      "nature_of_inconsistency": "Copied safety-envelope text disagreed with the locked Phase I size.",
+      "likely_cause": "adversarial_controls.json retained a copied stale detail string from the canonical summary.",
+      "resolution": "Repaired the copied detail string and documented that the safety envelope remains sourced from phase1_consolidated.json.",
+      "confidence": "high"
+    },
+    {
+      "quantity_or_metric": "Phase I delta",
+      "file_a": "phase1_consolidated.json",
+      "file_b": "phase1_stats.json",
+      "nature_of_inconsistency": "Same named quantity with materially different values (0.3810883045604201 versus 0.5770331774604861).",
+      "likely_cause": "phase1_stats.json is a later per-trajectory-QBM inferential rerun rather than the frozen shared-summary artifact.",
+      "resolution": "Marked phase1_consolidated.json canonical for the headline delta and phase1_stats.json canonical only for inferential support.",
+      "confidence": "high"
+    },
+    {
+      "quantity_or_metric": "Phase I delta",
+      "file_a": "phase1_consolidated.json",
+      "file_b": "phase1_entanglement_distributions.json",
+      "nature_of_inconsistency": "Same named quantity with materially different values (0.3810883045604201 versus 0.21345742336630646).",
+      "likely_cause": "phase1_entanglement_distributions.json is a reproduced shared-QBM distribution run that does not exactly recreate the frozen headline summary.",
+      "resolution": "Narrowed phase1_entanglement_distributions.json to array and AUC-support authority only and left the frozen headline delta with phase1_consolidated.json.",
+      "confidence": "high"
+    },
+    {
+      "quantity_or_metric": "EPS and PRI class summaries",
+      "file_a": "phase1_consolidated.json",
+      "file_b": "temporal_persistence.json",
+      "nature_of_inconsistency": "Shared metric names but different retained values for the same classes.",
+      "likely_cause": "Notebook 04 uses configs/default.yaml and a different batch-analysis protocol, while the frozen summary records retained Phase I gate-level values.",
+      "resolution": "Marked the temporal artifact canonical only for the temporal-persistence family and documented the overlap as non-comparable rather than unresolved.",
+      "confidence": "high"
+    },
+    {
+      "quantity_or_metric": "RBM and Autoencoder deltas",
+      "file_a": "core_baselines_phase1.json",
+      "file_b": "baseline_comparisons.json",
+      "nature_of_inconsistency": "Overlapping model names with different retained deltas for RBM and Autoencoder.",
+      "likely_cause": "The files represent different baseline families: a matched Phase I rerun versus a dedicated five-model comparison dataset, with different classical model settings.",
+      "resolution": "Separated the two baseline families in the authority map and documented partial canonicality by metric family.",
+      "confidence": "high"
+    }
+  ]
+}

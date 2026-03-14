@@ -1,0 +1,12 @@
+detector:
+  tau_ent: 1.9657
+  tau_mi: 0.3
+  tau_eps: 0.6507
+  tau_pri: 0.986
+  tau_spi: 0.28
+  tau_acm: 0.24
+temporal_persistence:
+  window_size: 20
+  stride: 20
+  k: 3
+  noise_std: 0.3

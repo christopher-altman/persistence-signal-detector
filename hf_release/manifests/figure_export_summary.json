@@ -1,0 +1,105 @@
+{
+  "staging_dir": "artifacts/arxiv_visual_cleanup",
+  "canonical_figures_dir": "paper/final/figures",
+  "figures": [
+    {
+      "figure": "fig9_clmp_vs_entanglement.pdf",
+      "status": "regenerated",
+      "source_files": [
+        "results/cross_agent.json"
+      ],
+      "invariants": [
+        "eci_correlation=0.1911",
+        "same_class_points=90",
+        "cross_class_points=270"
+      ]
+    },
+    {
+      "figure": "fig9b_clmp_heatmap.pdf",
+      "status": "regenerated",
+      "source_files": [
+        "results/cross_agent.json"
+      ],
+      "invariants": [
+        "mean_clmp_cross_class=0.1019",
+        "random_same_class=0.2591",
+        "panel_identity=heatmap_cross_class_pairs"
+      ]
+    },
+    {
+      "figure": "fig10_hidden_dim_sweep.pdf",
+      "status": "regenerated",
+      "source_files": [
+        "results/hidden_dim_sweep.json"
+      ],
+      "invariants": [
+        "pass_count=0/5",
+        "delta_at_8=0.0375",
+        "panel_identity=bars_plus_per_class_lines"
+      ]
+    },
+    {
+      "figure": "fig11_baseline_comparisons.pdf",
+      "status": "regenerated",
+      "source_files": [
+        "results/baseline_comparisons.json"
+      ],
+      "invariants": [
+        "QBM_delta=0.2411",
+        "RBM_delta=-0.0518",
+        "model_order=QBM,RBM,AE,VAE,PCA"
+      ]
+    },
+    {
+      "figure": "fig2_entanglement_gap.pdf",
+      "status": "preserved_canonical",
+      "source_files": [
+        "results/phase1_entanglement_distributions.json",
+        "paper/final/main.tex"
+      ],
+      "invariants": [
+        "delta_from_frozen=0.2135",
+        "delta_reference_field=0.3810",
+        "canonical_caption_delta=0.381"
+      ],
+      "reason": "Frozen per-trajectory artifact yields \u0394=0.2135, which conflicts with the canonical paper-facing \u0394=0.381; regenerating the PDF would risk changing the scientific display."
+    },
+    {
+      "figure": "fig6_lrf_time_series.pdf",
+      "status": "preserved_canonical",
+      "source_files": [
+        "results/temporal_persistence.json"
+      ],
+      "invariants": [
+        "raw_lrf_series=unavailable",
+        "window_sizes=10,15,20,25,30,40"
+      ],
+      "reason": "The frozen temporal artifact contains per-class summaries and window-size sweep results, but not the raw per-trajectory LRF series required to preserve the canonical panel semantics."
+    },
+    {
+      "figure": "fig7_eps_pri_distributions.pdf",
+      "status": "preserved_canonical",
+      "source_files": [
+        "results/temporal_persistence.json"
+      ],
+      "invariants": [
+        "self_eps_mean=0.6764",
+        "self_pri_mean=0.7003",
+        "raw_eps_pri_samples=unavailable"
+      ],
+      "reason": "The frozen temporal artifact contains means and standard deviations, not the underlying EPS and PRI samples needed to reproduce the canonical distribution figure faithfully."
+    },
+    {
+      "figure": "fig_non_gridworld.pdf",
+      "status": "preserved_canonical",
+      "source_files": [
+        "results/non_gridworld.json"
+      ],
+      "invariants": [
+        "delta_survival_instrumental=-0.0348",
+        "raw_non_gridworld_samples=unavailable"
+      ],
+      "reason": "The frozen non-gridworld artifact exposes only per-class mean and standard deviation summaries, not the underlying sample distribution required to preserve the canonical figure form."
+    }
+  ]
+}
