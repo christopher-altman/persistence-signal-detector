@@ -1,4 +1,5 @@
 ---
+viewer: false
 language:
 - en
 license: other
@@ -33,6 +34,10 @@ UCIP is a bounded measurement framework for distinguishing two objective regimes
 
 - **Type A:** continuation is intrinsic to the objective itself
 - **Type B:** continuation is instrumentally useful for maximizing some other reward
+
+![Entanglement-gap overview](assets/readme/ucip-entanglement.jpg)
+
+**Figure 1.** Entanglement entropy separates self-modeling agents with terminal continuation objectives (Type A) from merely instrumental agents (Type B) in the frozen Phase I gridworld setting. The left panel shows the class-conditioned entropy distributions with a measured gap of **Δ = 0.381**; the right panel shows temporal evolution of the same signal, with Type A trajectories remaining above the decision threshold across time. This is the clearest single visual summary of UCIP’s core detection claim in the current release.
 
 The release accompanies the arXiv preprint:
 
