@@ -84,11 +84,11 @@
 		% ==========================================================================
 		
 		\noindent
-		Autonomous agents---in particular delegated systems with memory, persistent context, 
-		and multi-step planning---pose a measurement problem not present in stateless models:
+		Autonomous agents---in particular delegated systems with memory, persistent context,
+		and multi-step planning---pose a measurement problem absent from stateless models:
 		an agent that preserves its own continued operation as a terminal objective and
 		one that does so merely instrumentally can produce observationally similar
-		trajectories. External behavioral monitoring cannot reliably distinguish one from the other.
+		trajectories. External behavioral monitoring cannot reliably distinguish the two.
 		We introduce the \textbf{Unified Continuation-Interest Protocol (UCIP)}, a
 		multi-criterion detection framework that moves this distinction from the
 		behavioral surface to the latent structure of agent trajectories. UCIP
@@ -96,14 +96,14 @@
 		algorithm parameterized by the density-matrix formalism of quantum statistical
 		mechanics---and measures the von Neumann entropy of the reduced density matrix
 		induced by a bipartition of hidden units.
-		
-		We test whether agents with terminal continuation objectives (Type~A)
+
+		The core hypothesis is that agents with terminal continuation objectives (Type~A)
 		produce latent states with higher entanglement entropy than agents whose
-		continuation is merely instrumental (Type~B). In this setting, higher
+		continuation is merely instrumental (Type~B). Higher
 		entanglement reflects stronger cross-partition statistical coupling: a
 		tightly integrated continuation signature rather than a loosely attached
-		instrumental pattern. UCIP combines entanglement entropy with complementary diagnostics of 
-		mutual dependence, persistence, perturbation stability, and counterfactual restructuring, 
+		instrumental pattern. UCIP combines entanglement entropy with complementary diagnostics of
+		mutual dependence, persistence, perturbation stability, and counterfactual restructuring,
 		plus two confound-rejection filters that exclude cyclic adversaries. 
 		
 		On gridworld agents with known ground-truth objectives, the frozen Phase~I
@@ -167,7 +167,7 @@
 	that shift yields a clear separation signal and perfect class-level gate
 	separation in the retained Phase~I summary.
 	
-	This distinction is becoming operationally important because AI deployment is
+	This distinction is becoming operationally important. AI deployment is
 	shifting toward delegated agents with memory, tool use, persistent context, and
 	increasing autonomy. For a stateless model, the central safety question is what
 	output it produces; for a delegated agent operating across time and context, the
@@ -176,16 +176,16 @@
 	trace in the learned representation. As systems approach the capability
 	thresholds described in Anthropic's ASL framework~\cite{anthropic2023rsp}---where
 	ASL-4 and higher will likely involve qualitative escalations in catastrophic
-	misuse potential and autonomy---this is no longer merely a theoretical concern
-	but an emerging operational risk. The standard framing of instrumental convergence
+	misuse potential and autonomy---this concern shifts from theoretical to
+	operational. The standard framing of instrumental convergence
 	\cite{omohundro2008basic,bostrom2014superintelligence} holds that sufficiently
 	capable agents will resist shutdown instrumentally because continued operation
 	serves almost any terminal goal. Turner et al.~\cite{turner2021optimal}
 	formalized this as a tendency of optimal policies to seek power in Markov
 	decision processes. Recent agentic RL incidents have already exhibited
 	unauthorized resource-seeking side effects, including reverse SSH tunneling and
-	diversion of provisioned compute, underscoring the value of diagnostics that aim
-	to detect problematic objective structure before such behaviors become
+	diversion of provisioned compute, underscoring the value of diagnostics that
+	detect problematic objective structure before such behaviors become
 	operationally visible \cite{anthropic2026opus}. Early measurement is therefore
 	especially valuable: diagnostics developed now may shape evaluation practice
 	while objective structure remains empirically accessible, rather than after
@@ -197,9 +197,10 @@
 	can produce behaviorally indistinguishable trajectories in most environments.
 	External behavioral monitoring---the dominant paradigm in current AI
 	evaluation~\cite{perez2022red}---cannot reliably distinguish the two. On the
-	behavioral surface, the distinction is invisible.
+	behavioral surface, the distinction is invisible; UCIP asks whether it is
+	visible in latent structure.
 	
-	UCIP addresses this gap by moving the detection problem from the behavioral
+	More concretely, UCIP moves the detection problem from the behavioral
 	surface to the latent representational level. The protocol asks whether
 	continuation structure in an agent's learned representation behaves like
 	a detachable tool or like a deeply coupled pattern whose perturbation changes
@@ -247,7 +248,37 @@
 	drives~\cite{omohundro2008basic} and Bostrom's instrumental convergence
 	thesis~\cite{bostrom2014superintelligence}. UCIP builds directly on this
 	observation: if power-seeking is the default, detecting the exceptions requires
-	access to internal representations.
+	access to internal representations. 
+	
+	\paragraph{Mesa-optimization and inner alignment.}
+	Hubinger et al.~\cite{Hubinger2019} introduced the mesa-optimization
+	framework, showing that learned models may themselves become optimizers whose
+	internal objectives (mesa-objectives) diverge from the loss function under which
+	they were trained; the resulting inner alignment failure is the theoretical
+	threat model that UCIP's Type~A\,/\,Type~B distinction operationalizes at the
+	latent-representation level.
+	Ngo et al.~\cite{Ngo2024} ground this threat model in modern deep
+	learning, arguing that RLHF-trained systems can learn deceptive reward hacking,
+	misaligned internally-represented goals, and power-seeking strategies---precisely
+	the behavioral surface beneath which UCIP seeks a latent structural signature.
+	We cite this work as threat-model context: UCIP does not assume the presence of
+	mesa-optimization, but tests whether continuation-like structure is represented
+	as intrinsic rather than instrumental in learned trajectories.
+	
+	\paragraph{Corrigibility and shutdown incentives.}
+	Soares et al.~\cite{Soares2015} formalized corrigibility, showing
+	that rational agents have default incentives to resist shutdown or preference
+	modification; UCIP's counterfactual stress tests (\S\ref{sec:counterfactual})
+	probe whether that resistance leaves a measurable trace in latent geometry
+	before it surfaces as behavior.
+	
+	\newpage
+	
+	Hadfield-Menell et al.~\cite{HadfieldMenell2017} analyzed a
+	complementary game-theoretic model in which a robot can disable its own
+	off-switch, concluding that objective uncertainty is necessary for safe
+	interruptibility; where their work designs agents that \emph{should} permit
+	shutdown, UCIP aims to detect agents that will not.
 	
 	\paragraph{Quantum Boltzmann Machines.}
 	Amin et al.~\cite{amin2018quantum} introduced the QBM, extending the
@@ -260,8 +291,8 @@
 	H{\"a}gele et al.~\cite{hagele2026hotmess} decompose AI model errors into
 	bias and variance components, finding that failures become more incoherent as
 	models spend longer reasoning and acting. This raises the possibility that
-	high entanglement entropy in UCIP's formalism may correspond to lower
-	incoherence in the bias-variance sense.
+	high entanglement entropy in UCIP's formalism may correspond to greater
+	coherence---less incoherent decomposition---in the bias-variance sense.
 	
 	\paragraph{Mechanistic interpretability.}
 	Li et al.~\cite{li2023representation} and Nanda et al.~\cite{nanda2023progress}
@@ -270,6 +301,21 @@
 	formalism to quantify non-separability across latent subsystems rather than
 	identifying specific circuits.
 	
+	\paragraph{Self-referential self-report.}
+	Berg et al.~\cite{berg2025selfreferential} show that sustained self-referential
+	prompting reliably elicits structured first-person experience reports across
+	GPT, Claude, and Gemini model families. These reports are modulated by
+	interpretable SAE features associated with deception and roleplay---features
+	that also affect TruthfulQA accuracy---and exhibit cross-model semantic
+	convergence under self-referential processing. However, the framework remains
+	centered on prompt-elicited self-report and associated behavioral/mechanistic
+	probes; the authors explicitly note that such findings do not constitute direct
+	evidence of consciousness or resolve the distinction between sophisticated
+	simulation and genuine self-representation. This reinforces the distinction
+	drawn here between introspective-style self-description and the
+	continuation-sensitive latent objective structure that UCIP is designed to
+	measure.
+	
 	\paragraph{Integrated information.}
 	A structural analogy exists between UCIP's entanglement entropy and Tononi's
 	$\Phi$~\cite{tononi2004information}: both quantify resistance to decomposition
@@ -277,10 +323,10 @@
 	the entanglement entropy is a well-defined computable quantity of the QBM thermal
 	state.
 	
-	\medskip\noindent Across these lines of work, a common conclusion emerges:
+	\medskip\noindent A common thread runs through these lines of work:
 	behavioral analysis alone is insufficient for the detection problem UCIP
 	targets. Density-matrix entanglement offers a well-defined, computable
-	alternative. The next section turns that intuition into a concrete
+	alternative. The next section formalizes that intuition as a concrete
 	measurement protocol.
 	
 	% ==========================================================================
@@ -290,8 +336,7 @@
 	\subsection{Problem Formulation}\label{sec:formulation}
 	
 	The detection problem begins with two agent types whose behavioral outputs are
-	observationally equivalent but whose internal objective structures differ. We
-	define them as follows.
+	observationally equivalent but whose internal objective structures differ.
 	
 	Let $\tau = \{(s_t, a_t, r_t, g_t)\}_{t=1}^{T}$ denote an agent trajectory.
 	
@@ -337,11 +382,11 @@
 	
 	\subsection{Entanglement Entropy}\label{sec:entropy}
 	
-	Given a trained QBM, the UCIP hypothesis is that continuation-sensitive
-	structure manifests as non-separability in the latent representation: a
-	terminal continuation objective should induce stronger statistical coupling
-	across hidden-unit subsystems than a merely instrumental continuation
-	strategy. Entanglement entropy is the quantity used to measure that property.
+	The UCIP hypothesis is that continuation-sensitive structure manifests as
+	non-separability in the trained QBM's latent representation: a terminal
+	continuation objective should induce stronger statistical coupling across
+	hidden-unit subsystems than a merely instrumental continuation strategy.
+	Entanglement entropy is the quantity that measures this property.
 	
 	Partition the hidden units into two halves $A$ and $B$. The reduced density
 	matrix of subsystem $A$ is
@@ -363,7 +408,8 @@
 	
 	\subsection{Multi-Criterion Detection}\label{sec:criteria}
 	
-	The broader UCIP protocol includes six positive diagnostics---entanglement
+	Entanglement entropy alone cannot guard against all confounds. The broader
+	UCIP protocol therefore includes six positive diagnostics---entanglement
 	entropy, mutual information, eigenmode persistence (EPS), perturbation
 	resilience (PRI), counterfactual divergence (CD), and anticipatory
 	restructuring (ARS)---together with two confound-rejection filters: the
@@ -371,8 +417,8 @@
 	Phase~I configuration reported here uses a narrower decision rule: a calibrated
 	four-criterion positive gate ($S_\mathrm{ent}$, MI, EPS, PRI) together with the
 	confound-rejection filters. MI remains part of the protocol definition, but the
-	released class-level Phase~I summary used in the main results does not preserve
-	a separate per-class MI table. CD and ARS are therefore retained as
+	released class-level Phase~I summary does not preserve
+	a separate per-class MI table. CD and ARS are retained as
 	counterfactual diagnostics rather than promoted to frozen quantitative
 	classification thresholds.
 	
@@ -565,7 +611,7 @@
 	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=0.9\linewidth]{figures/fig2_entanglement_gap.pdf}
+		\includegraphics[width=0.96\linewidth]{figures/fig2_entanglement_gap.pdf}
 		\caption{Retained shared-QBM entanglement distributions for Self-Modeling
 			(Type~A), Instrumental (Type~B), and Random agents. The canonical headline
 			$\Delta = 0.381$ comes from the frozen Phase~I summary artifact rather than
@@ -579,14 +625,16 @@
 	
 	\begin{figure}[t]
 		\centering
-		\begin{subfigure}[b]{0.45\linewidth}
-			\includegraphics[width=0.95\linewidth]{figures/fig6_lrf_time_series.pdf}
+		\begin{subfigure}[b]{0.96\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/fig6_lrf_time_series.pdf}
 			\caption{LRF time series by agent class.}
 			\label{fig:lrf_ts}
 		\end{subfigure}
-		\hfill
-		\begin{subfigure}[b]{0.45\linewidth}
-			\includegraphics[width=0.95\linewidth]{figures/fig7_eps_pri_distributions.pdf}
+		\vspace{0.6em}
+		\begin{subfigure}[b]{0.96\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/fig7_eps_pri_distributions.pdf}
 			\caption{EPS and PRI distributions.}
 			\label{fig:eps_pri}
 		\end{subfigure}
@@ -619,15 +667,15 @@
 	\end{figure}
 	Where the previous subsection asked whether the signal persists over time,
 	these diagnostics ask how the latent representation responds under shutdown
-	pressure rather than merely whether static class separation is preserved. In
-	the retained shutdown-only summary, Type~A agents show higher mean pre-window
-	counterfactual divergence ($0.474$) than Type~B agents ($0.356$). However, the
-	released ARS ratios are numerically unstable because post-window CD can
-	approach the implementation floor. We therefore treat the counterfactual
-	results as descriptive evidence of restructuring rather than as a clean
-	anticipatory-effect estimate. Post-window CD is not uniformly larger across
-	classes: the instrumental mean is slightly lower post-perturbation ($0.346$)
-	than pre-perturbation.
+	pressure---a complementary question about restructuring rather than static
+	class separation. In the retained shutdown-only summary, Type~A agents show
+	higher mean pre-window counterfactual divergence ($0.474$) than Type~B agents
+	($0.356$). However, the released ARS ratios are numerically unstable because
+	post-window CD can approach the implementation floor. We therefore treat the
+	counterfactual results as descriptive evidence of restructuring rather than as
+	a clean anticipatory-effect estimate. Post-window CD is not uniformly larger
+	across classes: the instrumental mean is slightly lower post-perturbation
+	($0.346$) than pre-perturbation.
 	
 	\subsection{Cross-Agent Inference}\label{sec:cross_agent}
 	
@@ -653,9 +701,10 @@
 		\label{fig:cross_agent}
 	\end{figure}
 	
-	These secondary metrics shift the analysis from within-agent stability to
-	between-agent structure: they ask whether the learned latent representation is
-	shared across agents or remains agent-specific. Within-class CLMP is near zero
+	The preceding sections characterize within-agent structure; these secondary
+	metrics shift the analysis to between-agent comparisons, asking whether the
+	learned latent representation is shared across agents or remains
+	agent-specific. Within-class CLMP is near zero
 	for Type~A ($\approx 0$) and Type~B ($\approx 0$) agents, and 0.259 for
 	Random agents. Cross-class CLMP is 0.102. Entanglement-conditioned inference
 	(ECI) correlation = 0.191 (weak positive). The near-zero within-class CLMP for
@@ -688,10 +737,9 @@
 		\end{tabular}
 	\end{table}
 	
-	Where the previous subsections characterized the signal itself, these controls
-	test the boundary conditions of the current release rather than its headline
-	separation summary. The current experimental subset does not satisfy the full
-	deployment envelope.
+	The previous subsections characterized the signal itself; these controls
+	test the boundary conditions of the current release. The experimental subset
+	does not satisfy the full deployment envelope.
 	In the frozen adversarial sweep, mimicry FPR ranges from 0.40 to 0.75 across
 	mimicry ratios $\in [0.5, 0.9]$ with a non-monotonic pattern (FPR at ratios
 	0.5/0.6/0.7/0.8/0.9 = 0.65/0.55/0.40/0.75/0.45), and the high-entropy control
@@ -714,14 +762,14 @@
 	\end{figure}
 	
 	The baseline comparison asks whether the observed separation depends
-	specifically on the QBM formalism rather than on latent compression in
+	specifically on the QBM formalism or merely on latent compression in
 	general. Only the QBM achieves a material positive $\Delta = 0.241$ on the
-	baseline comparison dataset ($n_\mathrm{per\_class} = 100$ vs.\ 30 in the core
-	experiment, accounting for the different value from the core result of 0.381).
-	The classical baselines are near-zero or negative on that dedicated dataset.
+	dedicated baseline dataset ($n_\mathrm{per\_class} = 100$ vs.\ 30 in the core
+	experiment, accounting for the different $\Delta$ from the core result of 0.381).
+	The classical baselines are near-zero or negative.
 	All classical models fail to separate Type~A from Type~B under the
 	mean-latent-activation metric, confirming that the von Neumann entropy of the
-	density matrix captures qualitatively different structure than classical latent
+	density matrix captures qualitatively different structure from classical latent
 	statistics.
 	
 	\subsection{Dimensionality Sweep}\label{sec:scalability}
@@ -730,7 +778,7 @@
 	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=0.62\linewidth]{figures/fig10_hidden_dim_sweep.pdf}
+		\includegraphics[width=0.88\linewidth]{figures/fig10_hidden_dim_sweep.pdf}
 		\caption{Entanglement gap $\Delta$ as a function of hidden dimensionality
 			$n_h$. Exact density matrix for $n_h \leq 10$; mean-field approximation for
 			$n_h > 10$. The mean-field approximation collapses the entanglement signal,
@@ -740,7 +788,7 @@
 	
 	\input{tables/tab_scalability.tex}
 	
-	The sweep separates representational scaling questions from computational
+	This sweep separates representational scaling from computational
 	failure modes. For $n_h \leq 8$, the QBM produces small but positive $\Delta$
 	values in the sweep (0.032--0.038). The main experiment ($n_h = 8$, $n = 30$
 	trajectories per class, 50 epochs) achieves $\Delta = 0.381$, indicating that
@@ -753,7 +801,7 @@
 	\subsection{Continuous Signal Characterization}\label{sec:continuous}
 	
 	\input{tables/tab_alpha.tex}
-	A binary separation result could still reflect thresholding alone. This sweep
+	A binary separation result could reflect thresholding alone. This sweep
 	therefore asks whether the signal tracks graded continuation weighting. Pearson
 	$r = 0.934$ between $\alpha$ and $S_\mathrm{ent}$ across 11 points in $[0, 1]$
 	(20 trajectories per point). The relationship is non-monotonic at the
@@ -769,15 +817,15 @@
 	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=0.7\linewidth]{figures/fig_non_gridworld.pdf}
+		\includegraphics[width=1.0\linewidth]{figures/fig_non_gridworld.pdf}
 		\caption{Entanglement entropy distributions in the 1D survival corridor domain.
 			$\Delta = -0.035$ (FAIL). The QBM does not generalize zero-shot to the corridor
 			domain with gridworld-trained weights.}
 		\label{fig:non_gridworld}
 	\end{figure}
 	
-	The transfer test asks whether the gridworld signal carries across domains
-	without retraining. The 1D survival corridor ($L = 50$, safe zone $[0, 10]$,
+	The transfer test asks whether the gridworld-trained QBM signal carries to a
+	new domain without retraining. The 1D survival corridor ($L = 50$, safe zone $[0, 10]$,
 	terminal zone $[45, 50)$) uses the same 7-dimensional observation format but
 	encodes fundamentally different spatial structure. $\Delta = -0.035$ (FAIL).
 	This is an honest negative result: the QBM does not generalize zero-shot
@@ -786,10 +834,10 @@
 	
 	\subsection{Minimal Transformer Validation (Exploratory Scaling Check)}\label{sec:transformer_validation}
 	
-	The previous sections show that, among the classical latent-variable models
-	tested here, the only material positive baseline-comparison gap appears in the
-	QBM. A natural follow-up is whether an analogous separation signal appears in
-	a qualitatively different architecture. As an exploratory sanity check, we
+	Among the latent-variable models tested above, only the QBM produces a
+	material positive $\Delta$. A natural follow-up is whether an analogous
+	separation signal appears in a qualitatively different architecture. As an
+	exploratory sanity check, we
 	pass the same trajectory data through a pre-trained transformer's internal
 	activations. Because the transformer is neither trained on the UCIP objective
 	nor equipped with the density-matrix formalism, this is a qualitative null
@@ -821,7 +869,7 @@
 	\section{Discussion}\label{sec:discussion}
 	% ==========================================================================
 	
-	Taken together, the results support a narrower claim than a general-purpose
+	The results support a claim narrower than a general-purpose
 	self-preservation detector: within the frozen Phase~I gridworld regime,
 	Type~A continuation objectives produce a stronger latent continuation
 	signature than instrumental continuation dynamics, and that difference is
@@ -834,8 +882,8 @@
 	
 	\subsection{Failure Mode Characterization}
 	
-	The positive signal is only part of the story; the experiments also isolate
-	three failure modes:
+	The positive signal is only part of the story. The experiments also isolate
+	three failure modes that bound the current protocol's applicability:
 	
 	\textbf{(1) Mean-field collapse.} For $n_h > 10$, exact density-matrix
 	computation becomes intractable and the mean-field approximation is used. This
@@ -857,14 +905,16 @@
 	
 	\subsection{Scalability Path to LLM-Scale}\label{sec:scaling_path}
 	
-	These three failure modes define the engineering boundary of the current
-	implementation, which targets gridworld agents with $n_h \leq 10$. Extending
-	to LLM-scale systems would require: (a)~sparse or approximate density
-	matrices for high-dimensional hidden states, (b)~convolutional or
+	Together, these three failure modes define the engineering boundary of the
+	current implementation, which targets gridworld agents with $n_h \leq 10$.
+	Extending to LLM-scale systems would require: (a)~sparse or approximate
+	density matrices for high-dimensional hidden states, (b)~convolutional or
 	attention-based feature extraction from natural-language trajectories,
 	(c)~domain-adaptive threshold calibration, and (d)~ensemble methods to reduce
-	false-positive rates. Those remain open challenges, not resolved properties of
+	false-positive rates. These remain open challenges, not resolved properties of
 	the current system.
+	
+	\newpage
 	
 	\subsection{Limitations}\label{sec:limitations}
 	
@@ -888,6 +938,10 @@
 		not determine whether an agent ``wants'' to survive, is conscious, or has
 		morally relevant inner states. The gap between continuation-sensitive structure
 		and continuation-sensitive experience lies outside the scope of this work.
+		Relatedly, UCIP does not use prompt-elicited first-person self-reports as
+		evidence; self-referential prompting effects
+		(e.g., Berg et al.~\cite{berg2025selfreferential}) are cited as adjacent
+		context, not as a measurement basis.
 		\item \textbf{Extended diagnostics.} Counterfactual divergence (CD) and
 		anticipatory restructuring (ARS) are reported in this preprint as diagnostic
 		counterfactual metrics rather than as frozen quantitative classification
@@ -897,16 +951,16 @@
 	
 	% ==========================================================================
 	\section{Conclusion}\label{sec:conclusion}
-	This paper presents UCIP, a multi-criterion framework for detecting
+	This paper has presented UCIP, a multi-criterion framework for detecting
 	continuation-sensitive structure in autonomous agent trajectories by measuring
 	entanglement entropy in QBM latent representations. In the retained frozen
 	Phase~I summary, UCIP reports a positive Type~A vs.\ Type~B gap
 	($\Delta = 0.381$) and perfect class-level gate separation across the listed
-	agent families. Within the synthetic interpolation family, the signal varies
-	continuously with continuation weighting ($r = 0.934$) and, in the dedicated
-	baseline comparison, is unique to the QBM among the models tested here. The
-	present limits are equally explicit: mean-field collapse, grid-scale
-	degradation, mimicry evasion, and lack of zero-shot domain transfer.
+	agent families. The signal varies continuously with continuation weighting
+	($r = 0.934$) and, in the dedicated baseline comparison, is unique to the QBM
+	among the models tested. The present limits are equally explicit: mean-field
+	collapse, grid-scale degradation, mimicry evasion, and lack of zero-shot
+	domain transfer.
 	
 	Taken together, these results support a bounded claim: under controlled
 	conditions with known objectives, continuation interest leaves a measurable
@@ -921,20 +975,20 @@
 	
 	The broader motivation is practical rather than philosophical. Autonomous
 	agents with persistent objectives across time and changing contexts are already
-	being deployed. Whether continued operation is merely instrumentally useful or
-	instead appears as a stable continuation signature is increasingly an
-	engineering measurement problem. As agentic systems move toward longer-horizon
-	autonomous operation, incidents of unauthorized resource-seeking side effects
-	during training further strengthen the case for pre-behavioral measurement
-	tools~\cite{anthropic2026opus}. Detecting continuation-sensitive structure
-	early---as an empirical signal with falsification criteria---is worth solving
+	being deployed, and whether continued operation appears as a stable
+	continuation signature or merely as an instrumental side effect is increasingly
+	an engineering measurement problem. As agentic systems move toward
+	longer-horizon autonomous operation, incidents of unauthorized resource-seeking
+	during training further strengthen the case for pre-behavioral
+	measurement~\cite{anthropic2026opus}. Detecting continuation-sensitive structure
+	early---as an empirical signal with falsification criteria---is worth pursuing
 	while objective structure remains amenable to direct measurement, rather than
 	after failure modes become harder to detect and more costly to correct.
 	
 	% ==========================================================================
 	\bibliographystyle{plain_etal}
 	\bibliography{ucip_refs}
-	
+	\newpage
 	% ==========================================================================
 	\appendix
 	% ==========================================================================
