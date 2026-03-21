@@ -439,7 +439,7 @@ If you use this project in your research, please cite both the software reposito
   <img src="assets/readme/lie-derivative-ucip-dark.jpg" alt="Persistence across scales: Lie derivative and UCIP" width="820">
 </p>
 
-**Conceptual framing.** This diagram places UCIP within a broader research framework connecting persistence, invariance, and structured change across multiple scales via the Lie derivative as a cross-scale persistence detector. The agent-scale component is the only layer operationalized and empirically evaluated in this repository. The remaining layers represent the long-range research program: if non-separability in trajectory-derived latent encodings correlates with morally relevant properties at the agent scale, the natural question is whether analogous persistence signatures appear at other scales of organization.
+**Conceptual framing.** This diagram places UCIP within a broader research framework — a coherence thesis — connecting persistence, invariance, and structured change across multiple scales via the Lie derivative as a cross-scale persistence detector. The agent-scale component is the only layer operationalized and empirically evaluated in this repository. The remaining layers represent the long-range research program: if non-separability in trajectory-derived latent encodings correlates with morally relevant properties at the agent scale, the natural question is whether analogous persistence signatures appear at other scales of organization.
 
 ---
 
