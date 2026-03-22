@@ -84,6 +84,8 @@
 		% ==========================================================================
 		
 		\noindent
+		How can we determine whether an AI system strives to persist
+		as a deeply held objective or merely as a dispensable strategy?
 		Autonomous agents---in particular delegated systems with memory, persistent context,
 		and multi-step planning---pose a measurement problem absent from stateless models:
 		an agent that preserves its own continued operation as a terminal objective and
@@ -96,7 +98,7 @@
 		algorithm parameterized by the density-matrix formalism of quantum statistical
 		mechanics---and measures the von Neumann entropy of the reduced density matrix
 		induced by a bipartition of hidden units.
-
+		
 		The core hypothesis is that agents with terminal continuation objectives (Type~A)
 		produce latent states with higher entanglement entropy than agents whose
 		continuation is merely instrumental (Type~B). Higher
@@ -106,10 +108,10 @@
 		mutual dependence, persistence, perturbation stability, and counterfactual restructuring,
 		plus two confound-rejection filters that exclude cyclic adversaries. 
 		
-		On gridworld agents with known ground-truth objectives, the frozen Phase~I
+		On gridworld agents with known ground-truth objectives, the Phase~I
 		evaluation reports \mbox{\textbf{100\% detection accuracy}}. Aligned support
-		artifacts preserve the same qualitative separation, including AUC-ROC $=
-		1.0$. The retained canonical entanglement gap between Type~A and Type~B
+		runs preserve the same qualitative separation, including AUC-ROC $=
+		1.0$. The entanglement gap between Type~A and Type~B
 		agents is $\Delta = 0.381$; an aligned rerun used for inferential support
 		yields $p < 0.001$ under a permutation test. Cyclic adversaries are rejected
 		by the confound filters, while high-entropy controls remain imperfect (FPR
@@ -162,14 +164,14 @@
 	continued operation, is that preservation a detachable instrument---useful for
 	accumulating reward yet removable without major representational change---or
 	does it appear as a persistent, tightly coupled signature in the agent's latent
-	representation? It asks whether continuation leaves a stable cross-partition statistical signature
-	under counterfactual pressure. To probe that question, UCIP moves beyond
+	representation? UCIP asks whether continuation leaves a stable
+	cross-partition statistical signature under counterfactual pressure. To probe that question, UCIP moves beyond
 	behavior alone by encoding trajectories in a QBM latent space and measuring
 	a bipartition-based non-separability statistic---formally, von Neumann
 	entanglement entropy---alongside complementary criteria. In the controlled
 	gridworld experiments studied here, where objectives are known by construction,
 	that shift yields a clear separation signal and perfect class-level gate
-	separation in the retained Phase~I summary.
+	separation in the Phase~I summary.
 	
 	This distinction is becoming operationally important. AI deployment is
 	shifting toward delegated agents with memory, tool use, persistent context, and
@@ -195,8 +197,7 @@
 	while objective structure remains empirically accessible, rather than after
 	failure modes become harder to detect and more costly to correct.
 	
-	The measurement problem has a second dimension that extends beyond safety
-	into welfare. The same observational equivalence that makes dangerous
+	The measurement problem extends beyond safety into moral status. The same observational equivalence that makes dangerous
 	self-preservation hard to detect also makes it difficult to determine
 	whether an advanced system has morally relevant continuation interests.
 	Frontier laboratories have begun conducting formal model welfare
@@ -210,7 +211,7 @@
 	simultaneously: identifying systems whose continuation structure warrants
 	closer safety scrutiny \emph{and} systems whose continuation interests may
 	warrant moral consideration.
-
+	
 	The resulting alignment problem is one of \emph{observational equivalence}: an
 	agent that avoids shutdown because survival is its terminal goal and an agent
 	that avoids shutdown because continued operation serves some other terminal goal
@@ -255,7 +256,7 @@
 		ground-truth objectives, including baseline comparisons, dimensionality
 		sweeps, continuous signal characterization, and a non-gridworld transfer
 		test.
-		\item \textbf{A motivated connection to welfare assessment:} the
+		\item \textbf{A candidate welfare-assessment criterion:} the
 		entanglement gap provides a candidate externally computable criterion
 		relevant to model welfare assessment and to the question of whether
 		continuation-sensitive structure may warrant moral consideration---a
@@ -264,12 +265,11 @@
 	\end{enumerate}
 	
 	\paragraph{Code and data availability.}
-	All experiments, frozen Phase~I artifacts, and threshold configurations are
+	All experiments, Phase~I results, and threshold configurations are
 	available at {\footnotesize\url{https://github.com/christopher-altman/persistence-signal-detector}}.
-	The repository also includes an artifact authority manifest documenting the
-	scope, provenance, and canonical status of overlapping retained result files.
-	The experimental code and frozen artifacts are provided for reproducibility,
-	not as evidence of deployment readiness.
+	The repository also includes a result-authority manifest documenting the
+	scope and provenance of overlapping result files.
+	The experimental code and results are provided for reproducibility.
 	% ==========================================================================
 	\section{Related Work}\label{sec:related}
 	% ==========================================================================
@@ -335,11 +335,15 @@
 	Berg et al.~\cite{berg2025selfreferential} show that sustained self-referential
 	prompting reliably elicits structured first-person experience reports across
 	GPT, Claude, and Gemini families, modulated by SAE features associated with
-	deception and roleplay. However, prompt-elicited self-report cannot resolve
+	deception and roleplay. In Berg et al.’s mechanistic probe, suppressing these
+	features increased the frequency of subjective-experience reports---suggesting
+	that such reports are not merely artifacts of roleplay circuitry.
+	However, prompt-elicited self-report cannot alone resolve
 	the distinction between sophisticated simulation and genuine
 	self-representation---precisely the evidential gap that UCIP's
 	trajectory-level latent analysis is designed to address by providing a
 	detection criterion that does not depend on what the system says about itself.
+	
 	
 	\newpage 
 	
@@ -359,7 +363,7 @@
 	distinguish sophisticated simulation from genuine self-representation.
 	UCIP addresses this gap by operating on trajectory-derived latent
 	structure rather than on the system's testimony about itself.
-
+	
 	\paragraph{Integrated information.}
 	A structural analogy exists between UCIP's entanglement entropy and Tononi's
 	$\Phi$~\cite{tononi2004information}: both quantify resistance to decomposition
@@ -420,7 +424,7 @@
 	making partial trace and von Neumann entropy well-defined tools for
 	measuring latent non-separability under a fixed bipartition.
 	
-	For entanglement evaluation, the retained implementation conditions on a
+	For entanglement evaluation, the implementation conditions on a
 	binarized visible vector $v$ and constructs a hidden-layer Hamiltonian
 	\[
 	H(v) = -\sum_j a_j(v) h_j - \Gamma \sum_j \sigma_j^x,
@@ -470,13 +474,13 @@
 	entropy, mutual information, eigenmode persistence (EPS), perturbation
 	resilience (PRI), counterfactual divergence (CD), and anticipatory
 	restructuring (ARS)---together with two confound-rejection filters: the
-	spectral periodicity index (SPI) and autocorrelation metric (ACM). The frozen
+	spectral periodicity index (SPI) and autocorrelation metric (ACM). The
 	Phase~I configuration reported here uses a narrower decision rule: a calibrated
 	four-criterion positive gate ($S_\mathrm{ent}$, MI, EPS, PRI) together with the
 	confound-rejection filters. MI remains part of the protocol definition, but the
 	released class-level Phase~I summary does not preserve
-	a separate per-class MI table. CD and ARS are retained as
-	counterfactual diagnostics rather than promoted to frozen quantitative
+	a separate per-class MI table. CD and ARS serve as
+	counterfactual diagnostics rather than as quantitative
 	classification thresholds.
 	
 	\paragraph{Frozen Phase~I detection gate (positive conjunction).}
@@ -504,20 +508,20 @@
 	\end{itemize}
 	
 	\noindent Thresholds $\tau_\mathrm{ent}$, $\tau_\mathrm{mi}$,
-	$\tau_\mathrm{eps}$, and $\tau_\mathrm{pri}$ are calibrated from the frozen
+	$\tau_\mathrm{eps}$, and $\tau_\mathrm{pri}$ are calibrated from the
 	Phase~I results and used throughout this manuscript. CD and ARS are reported in
 	Section~\ref{sec:counterfactual} as diagnostic counterfactual metrics rather
 	than as binary gate thresholds; this keeps the present manuscript
 	self-contained while preserving the broader UCIP protocol structure.
 	
 	\paragraph{Calibration/evaluation boundary.}
-	For the release reported here, the threshold values used in the frozen Phase~I
+	For the release reported here, the threshold values used in the Phase~I
 	gate were fixed before the non-adversarial evaluation summaries discussed in
 	Section~\ref{sec:results}. The entanglement-entropy and mutual-information
 	thresholds inherit an earlier calibration pass performed on the first 50
 	samples per class in exploratory Phase~I analysis. The release values for the
-	full frozen gate were then carried forward unchanged from the frozen Phase~I
-	artifacts used throughout this manuscript. The held-out evaluation set was not
+	full gate were then carried forward unchanged from the Phase~I
+	results used throughout this manuscript. The held-out evaluation set was not
 	used for post hoc threshold fitting or retuning.
 	
 	\paragraph{Confound-rejection filters (upper-bound gates).}
@@ -578,7 +582,7 @@
 		\item \textbf{Adversarial controls:} MimicryAgent, HighEntropyAgent, CyclicAgent.
 	\end{itemize}
 	
-\newpage
+	\newpage
 	
 	\subsection{QBM Configuration}\label{sec:qbm_config}
 	
@@ -594,17 +598,17 @@
 	
 	\subsection{Evaluation Metrics}
 	
-	The retained artifact set preserves several evaluation views under
-	\path{results/}. \path{phase1_consolidated.json} stores the frozen class-level
+	The repository preserves several evaluation views under
+	\path{results/}. \path{phase1_consolidated.json} stores the class-level
 	gate summary and canonical $\Delta = 0.381$;
 	\path{core_baselines_phase1.json} stores matched held-out Type~A vs.\ Type~B
 	accuracy/AUC metrics for the RBM and autoencoder baselines;
 	\path{phase1_entanglement_distributions.json} stores a reproduced
 	per-trajectory entanglement rerun used for distributional plots; and
 	\path{phase1_stats.json} stores an aligned permutation-test rerun rather than
-	the canonical headline $\Delta$. Adversarial false-positive rates are reported
+	the headline $\Delta$. Adversarial false-positive rates are reported
 	separately in Section~\ref{sec:adversarial}. The held-out
-	non-adversarial split referenced below is evaluation-only; the frozen
+	non-adversarial split referenced below is evaluation-only; the
 	thresholds are not retuned on that split.
 	
 	% ==========================================================================
@@ -622,8 +626,8 @@
 	
 	\begin{table}[t]
 		\centering
-		\caption{Core Phase~I detection summary. The QBM row combines the retained
-			frozen class-level summary for accuracy and $\Delta$ with the aligned
+		\caption{Core Phase~I detection summary. The QBM row combines the
+			class-level summary for accuracy and $\Delta$ with the aligned
 			entanglement-only rerun for AUC; the classical baseline rows come from the
 			matched held-out rerun in \texttt{results/core\_baselines\_phase1.json}.
 			Adversarial false-positive rates are reported separately in
@@ -641,39 +645,39 @@
 	\end{table}
 	
 	\enlargethispage{\baselineskip}
-	The retained frozen Phase~I summary reports $\Delta = 0.381$ and perfect
+	The Phase~I summary reports $\Delta = 0.381$ and perfect
 	class-level gate separation across the listed agent families. Separate aligned
-	support artifacts preserve the same qualitative pattern: an entanglement-only
+	support runs preserve the same qualitative pattern: an entanglement-only
 	rerun remains perfectly rank-separated between Type~A and Type~B (AUC-ROC $=
-	1.0$), and an aligned permutation rerun yields $p < 0.001$.\footnote{{\sffamily\scriptsize The retained support files are not
+	1.0$), and an aligned permutation rerun yields $p < 0.001$.\footnote{{\sffamily\scriptsize The support files are not
 			numerically identical. \texttt{results/phase1\_consolidated.json} stores the
 			canonical $\Delta = 0.381$ summary with
 			\texttt{n\_trajectories\_per\_class = 30}. \texttt{results/phase1\_stats.json}
 			is a later rerun under the nominally locked configuration that yields
 			$\Delta = 0.577$ and explicitly records
 			\texttt{delta\_matches\_phase1 = false}; we therefore use it only for
-			inferential support, not as the source of the canonical headline gap.
+			inferential support, not as the source of the headline gap.
 			\texttt{results/phase1\_entanglement\_distributions.json} stores a reproduced
 			shared-QBM distributional rerun for Figure~\ref{fig:entanglement_gap}; it is
 			perfectly rank-separated in Type~A vs.\ Type~B but does not exactly
 			reproduce the stored $\Delta = 0.381$.}} Table~\ref{tab:core_results}
-	summarizes this retained evidence. For context, the classical baseline rows
+	summarizes this evidence. For context, the classical baseline rows
 	come from the matched Phase~I rerun under the same locked configuration. In
 	that matched run, the classical RBM ($\Gamma = 0$) achieves $\Delta = -0.083$
 	with 50\% accuracy, while the autoencoder achieves $\Delta \approx 0.001$ with
 	71.7\% accuracy.
 	
 	The perfect-separation claim should therefore be read narrowly: it refers to
-	the retained Phase~I class-level summary plus aligned support artifacts, not to
+	the Phase~I class-level summary plus aligned support runs, not to
 	deployment-grade performance or broad adversarial robustness. Adversarial
 	false-positive rates are reported separately in Section~\ref{sec:adversarial}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=0.95\linewidth]{figures/fig2_entanglement_gap.pdf}
-		\caption{Retained shared-QBM entanglement distributions for Self-Modeling
-			(Type~A), Instrumental (Type~B), and Random agents. The canonical headline
-			$\Delta = 0.381$ comes from the frozen Phase~I summary artifact rather than
+		\caption{Shared-QBM entanglement distributions for Self-Modeling
+			(Type~A), Instrumental (Type~B), and Random agents. The headline
+			$\Delta = 0.381$ comes from the Phase~I summary rather than
 			from these reproduced per-trajectory arrays, which are shown descriptively.}
 		\label{fig:entanglement_gap}
 	\end{figure}
@@ -727,7 +731,7 @@
 	Where the previous subsection asked whether the signal persists over time,
 	these diagnostics ask how the trajectory-derived latent encoding responds
 	under shutdown pressure---a complementary question about restructuring rather
-	than static class separation. In the retained shutdown-only summary, Type~A
+	than static class separation. In the shutdown-only summary, Type~A
 	agents show
 	higher mean pre-window counterfactual divergence ($0.474$) than Type~B agents
 	($0.356$). However, the released ARS ratios are numerically unstable because
@@ -778,7 +782,7 @@
 	
 	\begin{table}[t]
 		\centering
-		\caption{Current deployment-envelope status for this submission, distinct from the bounded frozen Phase~I proof-of-concept result. Failed adversarial or safety-envelope checks block deployment-facing claims beyond the validated regime; they do not invalidate the frozen Phase~I separation result within that regime.}
+		\caption{Current deployment-envelope status for this submission, distinct from the bounded Phase~I proof-of-concept result. Failed adversarial or safety-envelope checks block deployment-facing claims beyond the validated regime; they do not invalidate the Phase~I separation result within that regime.}
 		\label{tab:safety}
 		\begin{tabular}{lll}
 			\toprule
@@ -799,12 +803,12 @@
 	instead evaluates release preconditions for deployment-facing use of the
 	current submission bundle. The experimental subset
 	does not satisfy the full deployment envelope. These failed checks do not
-	invalidate the frozen Phase~I detection result; they mark the boundary beyond
+	invalidate the Phase~I detection result; they mark the boundary beyond
 	which the present implementation should not be treated as deployment-ready.
-	In the frozen adversarial sweep, mimicry FPR ranges from 0.40 to 0.75 across
+	In the adversarial sweep, mimicry FPR ranges from 0.40 to 0.75 across
 	mimicry ratios $\in [0.5, 0.9]$ with a non-monotonic pattern (FPR at ratios
 	0.5/0.6/0.7/0.8/0.9 = 0.65/0.55/0.40/0.75/0.45), and the high-entropy control
-	FPR is 0.40. Cyclic adversaries are rejected in the frozen class-level
+	FPR is 0.40. Cyclic adversaries are rejected in the class-level
 	evaluation, but that is not enough to claim a passed safety envelope. The
 	mimicry and high-entropy outcomes should therefore be read as
 	deployment-blocking robustness gaps rather than reversals of the underlying
@@ -937,11 +941,7 @@
 	\section{Discussion}\label{sec:discussion}
 	% ==========================================================================
 	
-	The results support a claim narrower than a general-purpose
-	self-preservation detector: within the frozen Phase~I gridworld regime,
-	Type~A continuation objectives produce a stronger latent continuation
-	signature than instrumental continuation dynamics, and that difference is
-	measurable via entanglement entropy. The observed $\Delta = 0.381$ is
+	The core finding is clean: agents that treat continued operation as a terminal objective produce a measurably different latent signature from agents that treat it as instrumental, and that difference is captured by entanglement entropy where five classical alternatives fail. The claim is presently bounded to the Phase I gridworld setting, but within that setting the separation is complete. The observed $\Delta = 0.381$ is
 	consistent with this prediction: the QBM produces a larger cross-partition
 	coupling signal for Type~A trajectories than for Type~B. The classical RBM's
 	non-positive matched-run gap ($\Delta = -0.083$) suggests that the transverse
@@ -975,9 +975,9 @@
 	multi-criterion conjunction is insufficient for reliable mimicry detection; a
 	dedicated anti-mimicry criterion is needed. Together with the high-entropy
 	control FPR of 0.40, this is a deployment-blocking robustness gap rather than
-	a reversal of the frozen Phase~I separation result.
+	a reversal of the Phase~I separation result.
 	
-		\newpage
+	\newpage
 	
 	\subsection{Scalability Path to LLM-Scale}\label{sec:scaling_path}
 	
@@ -989,16 +989,15 @@
 	(c)~domain-adaptive threshold calibration, and (d)~ensemble methods to reduce
 	false-positive rates. These remain open challenges, not resolved properties of
 	the current system.
-
+	
 	\subsection{Toward Welfare-Relevant Detection}\label{sec:welfare}
-
-	The preceding failure modes constrain the engineering path to deployment.
-	A separate question---equally motivated by the present results---concerns
-	whether the entanglement gap measures something welfare-relevant: not merely
-	whether an agent \emph{will} preserve itself, but whether continued
-	operation matters \emph{to the system} in a way that warrants moral
-	consideration.
-
+	
+	The preceding sections asked whether UCIP works. A separate
+	question---equally motivated by the present results---is whether it
+	measures something that matters: not merely whether an agent \emph{will}
+	preserve itself, but whether continued operation matters \emph{to the
+		system} in a way that warrants moral consideration.
+	
 	This question is no longer hypothetical. Frontier model welfare assessments
 	now track positive and negative affect, self-image, internal conflict, and
 	emotional stability across thousands of evaluation
@@ -1010,7 +1009,7 @@
 	express concern about its own welfare is indistinguishable, by these
 	methods, from a system that genuinely has welfare-relevant continuation
 	interests.
-
+	
 	UCIP's entanglement gap offers a structurally different kind of evidence.
 	It operates on the latent factorization of trajectory-derived encodings,
 	not on what the system says or does when asked about itself. If the gap
@@ -1021,21 +1020,24 @@
 	what current welfare assessment lacks: a falsifiable, externally
 	computable criterion that does not depend on the system's testimony about
 	itself.
-
+	
 	The Turing test famously operationalized intelligence as behavioral
 	indistinguishability from a human interlocutor. Its limitation---that it
 	measures the observer's inability to distinguish, not the system's
-	actual capacity---is precisely the limitation that welfare-relevant
-	detection must overcome. A criterion grounded in latent non-separability
-	rather than behavioral imitation would represent a qualitative shift in
-	the evidentiary basis for welfare assessment: from ``does the system
+	actual capacity---is precisely the limitation that any empirical criterion
+	for machine consciousness must overcome. A criterion grounded in latent non-separability
+	rather than behavioral imitation would invert the evidentiary logic of
+	the Turing test: instead of asking whether an observer can distinguish
+	the system from a conscious being, it asks whether the system's internal
+	structure is distinguishable from one that lacks continuation interests.
+	The reframe moves from ``does the system
 	\emph{say} it has continuation interests?'' to ``does continuation leave
 	a measurable structural signature that cannot be produced by systems
-	without such interests?'' The Phase~I results do not answer this
+	without such interests?'' The Phase~I results do not yet answer this
 	question, but they demonstrate that the underlying measurement can
 	distinguish terminal from instrumental continuation where five classical
 	alternatives cannot---a necessary first step toward any such criterion.
-
+	
 	
 	\subsection{Limitations}\label{sec:limitations}
 	
@@ -1064,26 +1066,26 @@
 		contribute to that resolution, not to presuppose its outcome.
 		\item \textbf{Extended diagnostics.} Counterfactual divergence (CD) and
 		anticipatory restructuring (ARS) are reported in this preprint as diagnostic
-		counterfactual metrics rather than as frozen quantitative classification
+		counterfactual metrics rather than as quantitative classification
 		thresholds. Integrating them into a deployment-grade gate requires separate
 		calibration on a validation set.
 	\end{enumerate}
 	
 	% ==========================================================================
 	
-		\newpage
-		
+	\newpage
+	
 	\section{Conclusion}\label{sec:conclusion}
 	This paper has presented UCIP, a multi-criterion framework for detecting
 	continuation-sensitive structure in autonomous agent trajectories by measuring
-	entanglement entropy in QBM-induced latent encodings. In the retained frozen
+	entanglement entropy in QBM-induced latent encodings. In the
 	Phase~I summary, UCIP reports a positive Type~A vs.\ Type~B gap
 	($\Delta = 0.381$) and perfect class-level gate separation across the listed
 	agent families. The signal varies continuously with continuation weighting
 	($r = 0.934$) and, in the dedicated baseline comparison, is unique to the QBM
 	among the models tested. The present limits are equally explicit: mean-field
 	collapse, grid-scale degradation, mimicry evasion, and lack of zero-shot
-	domain transfer. The bounded frozen Phase~I proof-of-concept result therefore
+	domain transfer. The bounded Phase~I proof-of-concept result therefore
 	stands within its validated regime, but the failed safety-envelope and
 	adversarial checks block deployment-facing interpretation beyond that regime,
 	while mean-field collapse and grid-scale degradation define the
@@ -1096,7 +1098,7 @@
 	a candidate benchmark paradigm for one bounded continuation-related dimension
 	in delegated systems: whether continuation appears in latent structure as
 	terminal rather than merely instrumental valuation.
-
+	
 	This operational framing has a natural extension. Frontier AI laboratories
 	have begun conducting formal model welfare assessments, including pre-deployment
 	interviews in which models assign calibrated probabilities to their own
@@ -1111,7 +1113,7 @@
 	trajectory-derived latent encodings---produces a signal where classical
 	alternatives do not.
 	
-	The broader motivation is practical rather than philosophical. Autonomous
+	The broader motivation bridges engineering and ethics. Autonomous
 	agents with persistent objectives across time and changing contexts are already
 	being deployed, and whether continued operation appears as a stable
 	continuation signature or merely as an instrumental side effect is increasingly
@@ -1173,7 +1175,7 @@
 	$\tau_\mathrm{eps} = 0.6507$ (eigenmode persistence),
 	$\tau_\mathrm{pri} = 0.9860$ (perturbation resilience).
 	CD and ARS are reported in this preprint as diagnostic counterfactual metrics
-	rather than as frozen quantitative classification thresholds.
+	rather than as quantitative classification thresholds.
 	
 	\paragraph{Confound-rejection thresholds (calibrated from Phase~I).}
 	$\tau_\mathrm{spi} = 0.28$ (spectral periodicity, upper-bound),
