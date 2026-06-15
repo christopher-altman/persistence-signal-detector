@@ -7,7 +7,6 @@ Copyright © 2026 Christopher Altman. All rights reserved.
 ## Purpose of this repository
 
 This repository is released as a **public research artifact** for inspection, discussion, and reproducibility support.
-
 It is **not** released as open-source software.
 
 ## Permission granted
@@ -15,6 +14,7 @@ It is **not** released as open-source software.
 You may:
 
 - view, read, and download the repository contents for personal, educational, or non-commercial research review;
+- run, reproduce, and modify the code for non-commercial academic research — including replication, extension, and adversarial evaluation — provided results are attributed, any derived code remains non-commercial, and it is not deployed in any production system;
 - cite the repository in scholarly, journalistic, or technical discussion, with appropriate attribution;
 - reproduce small excerpts of text or code for commentary, criticism, or review, subject to applicable law.
 
@@ -47,6 +47,6 @@ For licensing, permissions, collaboration, or commercial inquiries, contact:
 
 ## No warranty
 
-This repository is provided **“as is”**, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, or suitability for deployment.
+This repository is provided **"as is"**, without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, or suitability for deployment.
 
 In no event shall the author be liable for any claim, damages, or other liability, whether in contract, tort, or otherwise, arising from, out of, or in connection with the repository or the use of or other dealings in the repository.
