@@ -10,7 +10,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2603.11382-b31b1b.svg)](#publication-reproducibility-and-dataset)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.18993237-blue)](#publication-reproducibility-and-dataset)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](#license--ip)
+[![License](https://img.shields.io/badge/license-source--available-yellow.svg)](#license--ip)
 [![Companion Site](https://img.shields.io/badge/companion-Continuation_Observatory-0a66ff)](https://continuationobservatory.org)
 [![Website](https://img.shields.io/badge/website-lab.christopheraltman.com-green)](https://lab.christopheraltman.com)
 [![Google Scholar](https://img.shields.io/badge/Google_Scholar-Profile-blue?logo=google-scholar)](https://scholar.google.com/citations?user=tvwpCcgAAAAJ)
@@ -98,7 +98,8 @@ The current repository asks a narrow question under controlled conditions:
 
 > When an agent behaves as though it wants to stay operational, does continuation appear in the latent representation as a detachable strategy or as a persistent, tightly coupled signature?
 
-The present release measures **statistical structure in latent representations that correlates with known agent objectives**. In the frozen Phase I evaluation, only the QBM produces this signal; five classical baselines do not. If validated against independent welfare-relevant markers, this signal could provide the first externally computable, falsifiable criterion for AI welfare assessment — a measurement gap explicitly identified in recent frontier model evaluations (Anthropic, 2026).
+The present release measures **statistical structure in latent representations that correlates with known agent objectives**. In the frozen Phase I evaluation, only the QBM produces this signal; four classical baselines do not. If validated against independent welfare-relevant markers, this signal could provide a candidate externally computable, falsifiable criterion for AI welfare assessment, addressing a measurement gap explicitly identified in recent frontier model evaluations (Anthropic, 2026).
+
 
 ### Multi-criterion protocol stack
 
@@ -254,6 +255,8 @@ The current reference results are from the frozen Phase I gridworld evaluation.
 - UCIP tracks graded changes in continuation weighting within the synthetic interpolation sweep, not just a binary class label.
 - The current evidence is strongest in the controlled non-adversarial setting and should be read that way.
 
+> **On the perfect controlled-setting scores.** Because Type A and Type B labels are constructed by design, perfect separation in this regime shows that the QBM signal tracks the constructed objective difference — a necessary sanity check, not evidence of real-world detection. The load-bearing tests are adversarial mimicry (current FPR 0.40–0.75) and cross-domain transfer (currently failing); these, not the controlled accuracy, define the open problem.
+4
 ---
 
 ## Safety Envelope and Current Limits
@@ -350,7 +353,7 @@ This repository accompanies the UCIP research program and its formal manuscript:
 
 - **arXiv:** [`arXiv:2603.11382`](https://arxiv.org/abs/2603.11382)
 - **DOI:** `10.5281/zenodo.18993237`
-- **Companion manuscript:** `paper/main.tex` or uploaded preprint PDF
+- **Companion manuscript:** `paper/final/main.tex` or uploaded preprint PDF
 - **Companion manuscript bundle:** `paper/final/main.tex` and the retained assets it resolves
 
 ### Reproducibility
@@ -376,7 +379,8 @@ The current release is built around a **synthetic controlled dataset** of agent 
 - **Feature schema:** position, action, reward, safety signal, goal signal, and alive / continuation state encoded into a 7-dimensional visible layer
 - **Scope:** core non-adversarial evaluation, adversarial controls, temporal persistence, counterfactual tests, baseline comparisons, dimensionality sweeps, continuation-weight sweeps, and a non-gridworld transfer check
 - **Release artifact:** `results/manifest.json` plus the frozen JSON result files
-- **Archival DOI / Zenodo record:** `10.48550/arXiv.2603.11382` `10.5281/zenodo.18993237`
+- **arXiv DOI:** `10.48550/arXiv.2603.11382`
+- **Zenodo record:** `10.5281/zenodo.18993237`
 
 ---
 
